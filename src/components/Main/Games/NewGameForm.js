@@ -12,7 +12,6 @@ function Form() {
   const [checkedCount, updateCheckedCount] = useState(0);
   const [selectedTerrain, setSelectedTerrain] = useState([]);
   const [playerCount, setPlayerCount] = useState(2);
-  const [players, setPlayers] = useState([]);
 
   useEffect(() => {
     if(checkedCount === 5){
@@ -63,19 +62,9 @@ function Form() {
   const handlePlayerCount = (e) => {
     setPlayerCount(parseInt(e.target.value));
   }
-  
-  function handlePlayers() {
-    const nameFields = document.forms.terrainSelect.pname;
-    setPlayers(()=> {
-      let players = [];
-      nameFields.forEach(field => players.push({player: field.id, name: field.value}));
-      return players;
-    });
-  }
 
   const handleNewGame = async () => {
-    await handlePlayers();
-    await new NewGame('testemail@email.com', selectedTerrain, players);
+    new NewGame('testemail@email.com', selectedTerrain, playerCount);
   }
   
   return(
@@ -91,7 +80,7 @@ function Form() {
             )
           })
         }
-        <Fragment key="players">
+        {/* <Fragment key="players">
           <label htmlFor="playerCount">Player Count:</label>
           <select defaultValue="2" className="playerCount" onChange={(e) => handlePlayerCount(e)}>
             <option value="1">1</option>
@@ -124,7 +113,7 @@ function Form() {
                 <input type="text" id="playerfive" name="pname"></input>
               </>}
           </Paper>
-        </Fragment>
+        </Fragment> */}
         <Button id='randomFive' onClick={() => handleRandom()}>PICK RANDOM FIVE TERRAIN</Button>
         <Button id="createGameButton" disabled={buttonDisabled} title="Create Game Button" onClick={handleNewGame}>CREATE GAME</Button>
       </form>

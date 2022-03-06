@@ -3,8 +3,7 @@ import terrainTypes from "./terrainTypes";
 export default function NewGame(owner, terrain, players){
   this.owner = owner;
   this.terrain = terrain;
-  this.players = players;
-  this.playercount = players.length;
+  this.playercount = players;
 
   this.tilePool = [];
   this.tokenPool = [];
@@ -27,7 +26,6 @@ NewGame.prototype.generatePools = async function(){
   }
   for (let i=0; i<this.terrain.length; i++){
     let terrainobj = terrainTypes.get(this.terrain[i]);
-    console.log('terrain obj: ', terrainobj);
     for (let j=0; j<12; j++){
       this.tilePool.push(new Tile(terrainobj.type, terrainobj.tileImg, terrainobj.tileDesc));
     }
