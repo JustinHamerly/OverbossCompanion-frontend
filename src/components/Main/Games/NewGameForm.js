@@ -1,7 +1,9 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Button, Paper } from '@material-ui/core';
 
-const terrainTypes = require('../../data/terrainTypes');
+import NewGame from '../../../data/gameConstructor.js';
+
+const terrainTypes = require('../../../data/terrainTypes');
 const terrainKeys = Array.from(terrainTypes.default.keys());
 
 function Form() {
@@ -64,21 +66,20 @@ function Form() {
   
   function handlePlayers() {
     const nameFields = document.forms.terrainSelect.pname;
-    setPlayers(() => {
+    setPlayers(()=> {
       let players = [];
       nameFields.forEach(field => players.push({player: field.id, name: field.value}));
       return players;
     });
   }
 
-  const handleNewGame = () => {
-    handlePlayers();
-    
+  const handleNewGame = async () => {
+    await handlePlayers();
+    await new NewGame('testemail@email.com', selectedTerrain, players);
   }
   
   return(
     <Paper>
-      <Button id='randomFive' onClick={() => handleRandom()}>PICK RANDOM FIVE TERRAIN</Button>
       <form id="terrainSelect" autoComplete="off" noValidate>
         {
           terrainKeys.map(key => {
@@ -124,6 +125,7 @@ function Form() {
               </>}
           </Paper>
         </Fragment>
+        <Button id='randomFive' onClick={() => handleRandom()}>PICK RANDOM FIVE TERRAIN</Button>
         <Button id="createGameButton" disabled={buttonDisabled} title="Create Game Button" onClick={handleNewGame}>CREATE GAME</Button>
       </form>
     </Paper>

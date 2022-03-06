@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect } from 'react';
-import { Container, AppBar, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import { getGames } from './actions/games';
 
-import Form from './components/NewGameForm/NewGameForm.js';
+import Main from './components/Main/Main.js';
+import Header from './components/Header/Header.js';
 
 function App() {
 
@@ -16,15 +16,8 @@ function App() {
 
   return (
     <Fragment>
-
-      <Container maxwidth="lg">
-        <AppBar position="static" color="inherit">
-          <Typography variant="h2" align="center">Overboss Companion</Typography>
-        </AppBar>
-      </Container>
-
-      <Form/>
-
+      <Header />
+      <Main />
     </Fragment>
   );
 
