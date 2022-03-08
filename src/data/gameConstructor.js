@@ -1,9 +1,10 @@
 import terrainTypes from "./terrainTypes";
 
-export default function NewGame(owner, terrain, players){
+export default function NewGame(owner, terrain, playercount, players){
   this.owner = owner;
   this.terrain = terrain;
-  this.playercount = players;
+  this.playercount = playercount;
+  this.players = players;
 
   this.tilePool = [];
   this.tokenPool = [];
@@ -38,8 +39,6 @@ NewGame.prototype.generatePools = async function(){
   await shuffle(this.tilePool);
   await shuffle(this.tokenPool);
   this.addInitialPairs();
-
-  console.log(this);
 }
 
 function shuffle(array){

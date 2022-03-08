@@ -15,3 +15,16 @@ export const getGames = () => async (dispatch) => {
 
   }
 }
+
+export const createGame = (game) => async (dispatch) => {
+  try {
+
+    const { data } = await api.createGame(game);
+    dispatch({ type: 'CREATE', payload: data });
+
+  } catch (error) {
+    
+    console.log(error.message);
+
+  }
+}

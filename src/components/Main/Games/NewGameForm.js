@@ -1,9 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Button, Paper } from '@material-ui/core';
-
 import NewGame from '../../../data/gameConstructor.js';
 
-const terrainTypes = require('../../../data/terrainTypes');
+const terrainTypes = require('../../../data/terrainTypes.js');
 const terrainKeys = Array.from(terrainTypes.default.keys());
 
 function Form() {
@@ -12,6 +11,10 @@ function Form() {
   const [checkedCount, updateCheckedCount] = useState(0);
   const [selectedTerrain, setSelectedTerrain] = useState([]);
   const [playerCount, setPlayerCount] = useState(2);
+  const [players, setPlayers] = useState([]);
+
+  const [gameData, setGameData] = useState({})
+  console.log(gameData);
 
   useEffect(() => {
     if(checkedCount === 5){
@@ -20,6 +23,13 @@ function Form() {
       setButtonDisabled(true);
     }
   }, [checkedCount]);
+
+  useEffect(() => {
+    if (players.length === playerCount){
+      let game = new NewGame('test@email.com', selectedTerrain, playerCount, players);
+      setGameData(game);
+    }
+  }, [players, playerCount, selectedTerrain])
 
   const pickRandomNumber = (array) => {
     return Math.floor(Math.random() * (array.length));
@@ -44,7 +54,7 @@ function Form() {
         selectedTypes.push(randomKey.value);
       }
     }
-    
+
     setSelectedTerrain(selectedTypes);
     updateCheckedCount(5);
   }
@@ -64,7 +74,13 @@ function Form() {
   }
 
   const handleNewGame = async () => {
-    new NewGame('testemail@email.com', selectedTerrain, playerCount);
+    let playerInputs = document.forms.terrainSelect.pname;
+    console.log(playerInputs);
+    let playerArray = [];
+    playerInputs.forEach(player => {
+      playerArray.push({id: player.id, name: player.value, tokens: [], tiles: [], consumable: [], consumed: []});
+    })
+    setPlayers(playerArray);
   }
   
   return(
@@ -80,7 +96,7 @@ function Form() {
             )
           })
         }
-        {/* <Fragment key="players">
+        <Fragment key="players">
           <label htmlFor="playerCount">Player Count:</label>
           <select defaultValue="2" className="playerCount" onChange={(e) => handlePlayerCount(e)}>
             <option value="1">1</option>
@@ -113,7 +129,7 @@ function Form() {
                 <input type="text" id="playerfive" name="pname"></input>
               </>}
           </Paper>
-        </Fragment> */}
+        </Fragment>
         <Button id='randomFive' onClick={() => handleRandom()}>PICK RANDOM FIVE TERRAIN</Button>
         <Button id="createGameButton" disabled={buttonDisabled} title="Create Game Button" onClick={handleNewGame}>CREATE GAME</Button>
       </form>
