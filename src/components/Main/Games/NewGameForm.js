@@ -1,11 +1,15 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Button, Paper } from '@material-ui/core';
 import NewGame from '../../../data/gameConstructor.js';
+import { useDispatch } from 'react-redux';
+import { createGame } from '../../../actions/games';
 
 const terrainTypes = require('../../../data/terrainTypes.js');
 const terrainKeys = Array.from(terrainTypes.default.keys());
 
 function Form() {
+
+  const dispatch = useDispatch();
 
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [checkedCount, updateCheckedCount] = useState(0);
@@ -14,7 +18,6 @@ function Form() {
   const [players, setPlayers] = useState([]);
 
   const [gameData, setGameData] = useState({})
-  console.log(gameData);
 
   useEffect(() => {
     if(checkedCount === 5){
@@ -29,7 +32,13 @@ function Form() {
       let game = new NewGame('test@email.com', selectedTerrain, playerCount, players);
       setGameData(game);
     }
-  }, [players, playerCount, selectedTerrain])
+  }, [players, playerCount, selectedTerrain]);
+
+  useEffect(() => {
+    if(gameData){
+      dispatch(createGame(gameData));
+    }
+  }, [dispatch, gameData]);
 
   const pickRandomNumber = (array) => {
     return Math.floor(Math.random() * (array.length));

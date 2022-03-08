@@ -7,7 +7,7 @@ const reducer = (games = [], action) => {
         return games;
       }
     case 'CREATE':
-      return games;
+      return [...games, action.payload];
     default:
       return games;
   }
