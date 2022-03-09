@@ -20,7 +20,6 @@ function Form(props) {
   const [open, setOpen] = useState(false);
 
   const [gameData, setGameData] = useState({});
-  console.log(gameData);
 
   useEffect(() => {
     if(checkedCount === 5){
@@ -82,9 +81,9 @@ function Form(props) {
   const handleNewGame = async () => {
     let playerInputs = document.forms.terrainSelect.pname;
     let playerArray = [];
-    playerInputs.forEach(player => {
-      playerArray.push({id: player.id, name: player.value, tokens: [], tiles: [], consumable: [], consumed: []});
-    })
+    for (let i=0; i<playerCount; i++){
+      playerArray.push({id: playerInputs[i].id, name: playerInputs[i].value, tokens: [], tiles: [], consumable: [], consumed: []});
+    }
     setPlayers(playerArray);
     setOpen(true);
   }

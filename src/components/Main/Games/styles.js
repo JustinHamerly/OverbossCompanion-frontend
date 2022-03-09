@@ -9,8 +9,8 @@ export default makeStyles((theme) => ({
   modal: {
     backgroundColor: 'purple',
     margin: 'auto',
-    width: '430px',
-    maxHeight: '500px',
+    width: '330px',
+    maxHeight: '515px',
     display: 'flex',
     justifyContent: 'center',
     border: 'none',
@@ -22,7 +22,7 @@ export default makeStyles((theme) => ({
   form: {
     display: 'flex',
     justifyContent: 'center',
-    width: '400px',
+    width: '300px',
     backgroundColor: 'green',
     color:'white',
   },
@@ -31,7 +31,8 @@ export default makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     margin: '10px',
-    backgroundColor:'lightgreen'
+    backgroundColor:'lightgreen',
+    width: '150px',
   },
   rightForm: {
     width: '200px',
