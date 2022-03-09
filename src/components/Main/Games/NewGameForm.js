@@ -95,6 +95,7 @@ function Form(props) {
   const handleConfirm = () => {
     dispatch(createGame(gameData));
     setOpen(false);
+    props.setModalOpen(false);
   }
   
   return(

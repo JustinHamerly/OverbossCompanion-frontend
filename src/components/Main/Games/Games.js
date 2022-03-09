@@ -12,13 +12,16 @@ function Games(props) {
       <Typography variant="h4" align="center">Games</Typography>
       <Button onClick={() => props.setModalOpen(true)}>New Game</Button>
       {
-        games.forEach(game => {
-          return(
-            <Card key={game.id}>
-              <Typography variant="h5">{game.owner}</Typography>
-            </Card>
-          )
-        })
+        !games.length ? <Typography>No Games</Typography> : (
+          <Paper>
+            {games.map(game => (
+              <Card key={game._id}>
+                <Typography>Players: {game.players.map(player => player.name + ' ') }</Typography>
+                <Typography>Terrain Types: {game.terrain.map(type => type + ' ')}</Typography>
+              </Card> 
+            ))}
+          </Paper>
+        )
       }
     </Paper>
   )  

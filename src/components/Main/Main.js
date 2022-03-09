@@ -13,7 +13,7 @@ function Main() {
 
   return (
     <Fragment>
-      <Form modalOpen={modalOpen} handleModalClose={handleModalClose} />
+      <Form modalOpen={modalOpen} setModalOpen={setModalOpen} handleModalClose={handleModalClose} />
       <Games setModalOpen={setModalOpen} />
     </Fragment>
   )  
