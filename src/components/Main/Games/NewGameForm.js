@@ -1,14 +1,15 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Button, Paper, Dialog, DialogContent, DialogActions, DialogTitle, DialogContentText } from '@material-ui/core';
+import { Button, Paper, Dialog, DialogContent, DialogActions, DialogTitle, DialogContentText, Modal } from '@material-ui/core';
 import NewGame from '../../../data/gameConstructor.js';
 import { useDispatch } from 'react-redux';
 import { createGame } from '../../../actions/games';
+import useStyles from './styles.js';
 
 const terrainTypes = require('../../../data/terrainTypes.js');
 const terrainKeys = Array.from(terrainTypes.default.keys());
 
-function Form() {
-
+function Form(props) {
+  const classes = useStyles();
   const dispatch = useDispatch();
 
   const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -87,86 +88,88 @@ function Form() {
     setPlayers(playerArray);
     setOpen(true);
   }
-
+  
   const handleClose = () => {
     setOpen(false);
   }
-
+  
   const handleConfirm = () => {
     dispatch(createGame(gameData));
     setOpen(false);
   }
   
   return(
-    <Paper>
-      <form id="terrainSelect" autoComplete="off" noValidate>
-        {
-          terrainKeys.map(key => {
-            return(
-              <Fragment key={key}>
-                <label htmlFor={key}>{key}</label>
-                <input type="checkbox" id={key} name="terrainTypes" value={key} onClick={(e) => handleCheckbox(e)}/>
-              </Fragment>
-            )
-          })
-        }
-        <Fragment key="players">
-          <label htmlFor="playerCount">Player Count:</label>
-          <select defaultValue="2" className="playerCount" onChange={(e) => handlePlayerCount(e)}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <Paper id="playernames">
-            <label htmlFor="playerone">Player 1:</label>
-            <input type="text" id="playerone" name="pname"></input>
+    <Modal open={props.modalOpen} onClose={props.handleModalClose} className={classes.modal}>
+      <Paper className={classes.paper} >
+        <form id="terrainSelect" autoComplete="off" noValidate className={classes.form}>
+          <Paper className={classes.formTerrain}>
+            {
+              terrainKeys.map(key => {
+                return(
+                  <Paper key={key} className={classes.formTerrainInput}>
+                    <label htmlFor={key}>{key}</label>
+                    <input type="checkbox" id={key} name="terrainTypes" value={key} onClick={(e) => handleCheckbox(e)}/>
+                  </Paper>
+                )
+              })
+            }
+          </Paper>
+          <Paper key="players" className={classes.rightForm}>
+            <Button id='randomFive' className={classes.buttonSubmit} onClick={() => handleRandom()}>RANDOM 5 TERRAIN</Button>
+            <label htmlFor="playerCount" className={classes.inputLabel}>Player Count:</label>
+            <select defaultValue="2" className={classes.fileInput} onChange={(e) => handlePlayerCount(e)}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <label htmlFor="playerone" className={classes.inputLabel}>Player 1:</label>
+            <input type="text" id="playerone" name="pname" className={classes.fileInput}></input>
             {playerCount > 1 &&
               <>
-                <label htmlFor="playertwo">Player 2:</label>
-                <input type="text" id="playertwo" name="pname"></input>
+                <label htmlFor="playertwo" className={classes.inputLabel}>Player 2:</label>
+                <input type="text" id="playertwo" name="pname" className={classes.fileInput}></input>
               </>}
             {playerCount > 2 && 
               <>
-                <label htmlFor="playerthree">Player 3:</label>
-                <input type="text" id="playerthree" name="pname"></input>
+                <label htmlFor="playerthree" className={classes.inputLabel}>Player 3:</label>
+                <input type="text" id="playerthree" name="pname" className={classes.fileInput}></input>
               </>}
             {playerCount > 3 && 
               <>
-                <label htmlFor="playerfour">Player 4:</label>
-                <input type="text" id="playerfour" name="pname"></input>
+                <label htmlFor="playerfour" className={classes.inputLabel}>Player 4:</label>
+                <input type="text" id="playerfour" name="pname" className={classes.fileInput}></input>
               </>}
             {playerCount === 5 &&
               <>
-                <label htmlFor="playerfive">Player 5:</label>
-                <input type="text" id="playerfive" name="pname"></input>
+                <label htmlFor="playerfive" className={classes.inputLabel}>Player 5:</label>
+                <input type="text" id="playerfive" name="pname" className={classes.fileInput}></input>
               </>}
+            <Button id="createGameButton" disabled={buttonDisabled} title="Create Game Button" className={classes.buttonSubmit} onClick={handleNewGame}>CREATE GAME</Button>
           </Paper>
-        </Fragment>
-        <Button id='randomFive' onClick={() => handleRandom()}>PICK RANDOM FIVE TERRAIN</Button>
-        <Button id="createGameButton" disabled={buttonDisabled} title="Create Game Button" onClick={handleNewGame}>CREATE GAME</Button>
-      </form>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Create a new Game?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Would you like to create a game?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleConfirm}>Confirm</Button>
-          <Button onClick={handleClose}>Cancel</Button>
-        </DialogActions>
-      </Dialog>
-    </Paper>
+        </form>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          >
+          <DialogTitle id="alert-dialog-title">
+            {"Create a new Game?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Would you like to create a game?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleConfirm}>Confirm</Button>
+            <Button onClick={handleClose}>Cancel</Button>
+          </DialogActions>
+        </Dialog>
+      </Paper>
+    </Modal>
   )
   
 }
