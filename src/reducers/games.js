@@ -2,7 +2,7 @@ const reducer = (games = [], action) => {
   switch (action.type) {
     case 'FETCH_ALL':
       if (action.payload){
-        return action.payload;
+        return [...games, action.payload];
       }  else {
         return games;
       }

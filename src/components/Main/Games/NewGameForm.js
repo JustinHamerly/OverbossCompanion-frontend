@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Button, Paper } from '@material-ui/core';
+import { Button, Paper, Dialog, DialogContent, DialogActions, DialogTitle, DialogContentText } from '@material-ui/core';
 import NewGame from '../../../data/gameConstructor.js';
 import { useDispatch } from 'react-redux';
 import { createGame } from '../../../actions/games';
@@ -16,8 +16,10 @@ function Form() {
   const [selectedTerrain, setSelectedTerrain] = useState([]);
   const [playerCount, setPlayerCount] = useState(2);
   const [players, setPlayers] = useState([]);
+  const [open, setOpen] = useState(false);
 
-  const [gameData, setGameData] = useState({})
+  const [gameData, setGameData] = useState({});
+  console.log(gameData);
 
   useEffect(() => {
     if(checkedCount === 5){
@@ -33,12 +35,6 @@ function Form() {
       setGameData(game);
     }
   }, [players, playerCount, selectedTerrain]);
-
-  useEffect(() => {
-    if(gameData){
-      dispatch(createGame(gameData));
-    }
-  }, [dispatch, gameData]);
 
   const pickRandomNumber = (array) => {
     return Math.floor(Math.random() * (array.length));
@@ -84,12 +80,21 @@ function Form() {
 
   const handleNewGame = async () => {
     let playerInputs = document.forms.terrainSelect.pname;
-    console.log(playerInputs);
     let playerArray = [];
     playerInputs.forEach(player => {
       playerArray.push({id: player.id, name: player.value, tokens: [], tiles: [], consumable: [], consumed: []});
     })
     setPlayers(playerArray);
+    setOpen(true);
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  }
+
+  const handleConfirm = () => {
+    dispatch(createGame(gameData));
+    setOpen(false);
   }
   
   return(
@@ -142,6 +147,25 @@ function Form() {
         <Button id='randomFive' onClick={() => handleRandom()}>PICK RANDOM FIVE TERRAIN</Button>
         <Button id="createGameButton" disabled={buttonDisabled} title="Create Game Button" onClick={handleNewGame}>CREATE GAME</Button>
       </form>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Create a new Game?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Would you like to create a game?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleConfirm}>Confirm</Button>
+          <Button onClick={handleClose}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
     </Paper>
   )
   

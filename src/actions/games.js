@@ -7,6 +7,7 @@ export const getGames = () => async (dispatch) => {
   try{
 
     const { data } = await api.fetchGames();
+    console.log(data)
     dispatch({type: 'FETCH_ALL', data});
 
   }catch(e){
