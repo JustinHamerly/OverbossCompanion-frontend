@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { getGames } from './actions/games';
@@ -9,10 +9,8 @@ import Header from './components/Header/Header.js';
 function App() {
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getGames());
-  }, [dispatch]);
+  
+  dispatch(getGames());
 
   return (
     <Fragment>

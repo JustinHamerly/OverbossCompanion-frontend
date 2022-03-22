@@ -6,15 +6,20 @@ import Games from './Games/Games.js'
 function Main() {
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleModalClose = () => {
     setModalOpen(false);
   }
 
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
+  }
+
   return (
     <Fragment>
       <Form modalOpen={modalOpen} setModalOpen={setModalOpen} handleModalClose={handleModalClose} />
-      <Games setModalOpen={setModalOpen} />
+      <Games drawerOpen={drawerOpen} setModalOpen={setModalOpen} setDrawerOpen={setDrawerOpen} handleDrawerClose={handleDrawerClose} />
     </Fragment>
   )  
 }
