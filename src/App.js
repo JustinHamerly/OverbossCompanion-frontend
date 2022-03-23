@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { getGames } from './actions/games';
+import { getGames } from './redux/actions/games';
 
 import Main from './components/Main/Main.js';
 import Header from './components/Header/Header.js';
@@ -12,9 +12,25 @@ function App() {
   
   dispatch(getGames());
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  }
+
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
+  }
+
   return (
     <Fragment>
-      <Header />
+      <Header 
+        drawerOpen={drawerOpen} 
+        setModalOpen={setModalOpen} 
+        setDrawerOpen={setDrawerOpen} 
+        handleDrawerClose={handleDrawerClose}
+      />
       <Main />
     </Fragment>
   );
