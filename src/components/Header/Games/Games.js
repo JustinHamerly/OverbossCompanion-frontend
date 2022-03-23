@@ -1,29 +1,39 @@
-import React from 'react';
-import { Paper, Typography, Button, Drawer } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Typography, Button, Drawer } from '@material-ui/core';
 import GameCards from './GameCards/GameCards';
 import DoubleArrowRoundedIcon from '@mui/icons-material/DoubleArrowRounded';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import Form from './NewGameForm/NewGameForm'
 
-function Games(props) {
+function Games() {
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  }
+
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
+  }
 
   return (
-    <Paper>
-      <Typography variant="h4" align="center">Games</Typography>
-      <Button onClick={() => props.setDrawerOpen(true)}>
+    <div>
+      <Button onClick={() => setDrawerOpen(true)}>
         <DoubleArrowRoundedIcon />
         MY GAMES
       </Button>
-      <Button onClick={() => props.setModalOpen(true)}>
+      <Button onClick={() => setModalOpen(true)}>
         <AddCircleRoundedIcon />
         New Game
       </Button>
-      <Drawer open={props.drawerOpen} onClose={props.handleDrawerClose} >
+      <Drawer open={drawerOpen} onClose={handleDrawerClose} >
         <Typography>MY GAMES</Typography>
         <GameCards />
       </Drawer>
-      <Form modalOpen={props.modalOpen} setModalOpen={props.setModalOpen} handleModalClose={props.handleModalClose} />
-    </Paper>
+      <Form modalOpen={modalOpen} setModalOpen={setModalOpen} handleModalClose={handleModalClose} />
+    </div>
   )  
 }
 

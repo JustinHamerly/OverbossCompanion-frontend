@@ -3,7 +3,7 @@ import { Button, Paper, Dialog, DialogContent, DialogActions, DialogTitle, Dialo
 import NewGame from '../../../../data/gameConstructor.js';
 import { useDispatch } from 'react-redux';
 import { createGame } from '../../../../redux/actions/games';
-import useStyles from '../styles.js';
+import useStyles from './styles.js';
 
 const terrainTypes = require('../../../../data/terrainTypes.js');
 const terrainKeys = Array.from(terrainTypes.default.keys());

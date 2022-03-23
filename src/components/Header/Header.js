@@ -1,32 +1,17 @@
 import React, {useState} from 'react';
-import { AppBar, Typography } from '@material-ui/core';
+import { AppBar, Typography, Button } from '@material-ui/core';
 import Games from './Games/Games';
+import './Header.css';
 
 function Header(props) {
-
-  const [modalOpen, setModalOpen] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const handleModalClose = () => {
-    setModalOpen(false);
-  }
-
-  const handleDrawerClose = () => {
-    setDrawerOpen(false);
-  }
-
-
   return (
     <AppBar position="static" color="inherit">
-      <Games 
-        drawerOpen={drawerOpen} 
-        setDrawerOpen={setDrawerOpen} 
-        handleDrawerClose={handleDrawerClose} 
-        modalOpen={modalOpen} 
-        setModalOpen={setModalOpen} 
-        handleModalClose={handleModalClose}
-      />
+      <Games />
       <Typography variant="h2" align="center">Overboss Companion</Typography>
+      <div>
+        <Button>LOGIN</Button>
+        <Button>USER</Button>
+      </div>
     </AppBar>
   )  
 }
