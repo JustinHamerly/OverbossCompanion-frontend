@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { getGames } from './redux/actions/games';
@@ -12,25 +12,9 @@ function App() {
   
   dispatch(getGames());
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const handleModalClose = () => {
-    setModalOpen(false);
-  }
-
-  const handleDrawerClose = () => {
-    setDrawerOpen(false);
-  }
-
   return (
     <Fragment>
-      <Header 
-        drawerOpen={drawerOpen} 
-        setModalOpen={setModalOpen} 
-        setDrawerOpen={setDrawerOpen} 
-        handleDrawerClose={handleDrawerClose}
-      />
+      <Header />
       <Main />
     </Fragment>
   );
