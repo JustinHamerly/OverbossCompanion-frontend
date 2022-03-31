@@ -47,8 +47,9 @@ export const pickAndUpdate = (payload) => async (dispatch) => {
 
     const selectedToken = gameToUpdate.display[index].token;
     const selectedTile = gameToUpdate.display[index].tile;
-    gameToUpdate.tileDiscard.push(selectedTile);
-    gameToUpdate.tokenDiscard.push(selectedToken);
+    let lastPlayer = gameToUpdate.players.shift();
+    lastPlayer.tiles.push(selectedTile);
+    lastPlayer.tokens.push(selectedToken);
 
     const newToken = gameToUpdate.tokenPool.pop();
     const newTile = gameToUpdate.tilePool.pop();
@@ -57,7 +58,6 @@ export const pickAndUpdate = (payload) => async (dispatch) => {
       tile: newTile,
     }
 
-    let lastPlayer = gameToUpdate.players.shift();
     gameToUpdate.players.push(lastPlayer)
     
     gameToUpdate.display.shift()
