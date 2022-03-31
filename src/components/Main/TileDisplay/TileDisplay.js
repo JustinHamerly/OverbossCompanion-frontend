@@ -4,6 +4,11 @@ import { useSelector } from 'react-redux';
 
 function TileDisplay(){
   const selectedGame = useSelector((state) => state.selectedGame);
+
+  const handlePick = (idx) => {
+    console.log(idx)
+  }
+
   return(
     <Container id="display">
       {selectedGame.display ?
@@ -14,7 +19,7 @@ function TileDisplay(){
               <img src={set.tile.tileImg} alt={set.tile.tileName}></img>
               <Typography>Token: {set.token.tokenName}</Typography>
               <img src={set.token.tokenImg} alt={set.tile.tileName}></img>
-              <Button>Pick Pair</Button>
+              <Button onClick={()=>{handlePick(selectedGame.display.indexOf(set))}}>Pick Pair</Button>
             </Paper>
           )
         })
