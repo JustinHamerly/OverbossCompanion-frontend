@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import GameToolbar from './Games/GameToolbar.js';
+import GameToolbar from './Games/GameToolbar/GameToolbar.js';
 
 function Main() {
   return (

@@ -8,19 +8,14 @@ function SelectedGameInfo() {
 
   return(
     <div>
-      <Typography>Selected Game</Typography>
       {selectedGame.players ? 
         <>
-          <Typography>Players: {selectedGame.players.map(player =>{
-            return(
-              <Typography>{player.name}</Typography>
-            )
-          })}</Typography>
-          <Typography>Terrain Types:{selectedGame.terrain.map(terrain =>{
-            return(
-              <Typography>{terrain}</Typography>
-            )
-          })}</Typography>
+          <Typography>Selected Game</Typography>
+          <Typography>Players: {selectedGame.players.map(player => player.name).join(', ')}</Typography>
+          <Typography>Terrain Types:{selectedGame.terrain.join(', ')}</Typography>
+          <Typography>Tile Pool: {selectedGame.tilePool.length} tiles left</Typography>
+          <Typography>Token Pool: {selectedGame.tokenPool.length} tiles left</Typography>
+          <Typography>Player Turn: {selectedGame.players[0].name}</Typography>
         </>
         :
         <Typography>No Selected Game</Typography>
