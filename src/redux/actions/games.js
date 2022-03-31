@@ -30,3 +30,11 @@ export const createGame = (game) => async (dispatch) => {
 
   }
 }
+
+export const selectGame = (game) => async (dispatch) => {
+  try{
+    dispatch({type: 'SELECT_GAME', payload: game})
+  }catch(error){
+    console.log(error.message);
+  }
+}

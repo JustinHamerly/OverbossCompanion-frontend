@@ -1,19 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-  header: {
+  toolbar: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     padding: '10px',
-    backgroundColor: 'purple',
+    marginBottom: '20px',
+    backgroundColor: 'green',
     color: 'gold',
-  },
-  h1: {
-    fontFamily: 'Shadows Into Light',
-    display: 'inline',
-    padding: '10px'
   },
   button: {
     backgroundColor: 'gold',

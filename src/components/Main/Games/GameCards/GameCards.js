@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
-import { useSelector } from 'react-redux';
-import { Typography, Card, Button, CircularProgress, CardHeader } from '@material-ui/core';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectGame } from '../../../../redux/actions/games';
+import { Typography, Card, Button, CircularProgress } from '@material-ui/core';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import TerrainRoundedIcon from '@mui/icons-material/TerrainRounded';
 
 function GameCards(props){
-
+  const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
   console.log(games); 
   return(
@@ -23,6 +24,10 @@ function GameCards(props){
                 <Button onClick={() => {}}>
                   <DeleteForeverRoundedIcon/>
                   <Typography>DELETE GAME</Typography>
+                </Button>
+                <Button onClick={() => {dispatch(selectGame(game));}}>
+                  <DeleteForeverRoundedIcon/>
+                  <Typography>Select Game</Typography>
                 </Button>
               </Card> 
             ))}
