@@ -1,10 +1,9 @@
-import { Container, Paper, Typography } from "@material-ui/core";
+import { Container, Paper, Typography, Button } from "@material-ui/core";
 import { useSelector } from 'react-redux';
 
 
 function TileDisplay(){
   const selectedGame = useSelector((state) => state.selectedGame);
-
   return(
     <Container id="display">
       {selectedGame.display ?
@@ -12,7 +11,10 @@ function TileDisplay(){
           return(
             <Paper key={selectedGame.display.indexOf(set)}>
               <Typography>Tile: {set.tile.tileName}</Typography>
+              <img src={set.tile.tileImg} alt={set.tile.tileName}></img>
               <Typography>Token: {set.token.tokenName}</Typography>
+              <img src={set.token.tokenImg} alt={set.tile.tileName}></img>
+              <Button>Pick Pair</Button>
             </Paper>
           )
         })
