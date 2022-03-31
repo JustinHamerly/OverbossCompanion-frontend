@@ -1,12 +1,22 @@
 import { Container, Paper, Typography, Button } from "@material-ui/core";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { pickAndUpdate } from "../../../redux/actions/games";
 
 
 function TileDisplay(){
   const selectedGame = useSelector((state) => state.selectedGame);
+  const dispatch = useDispatch();
 
   const handlePick = (idx) => {
     console.log(idx)
+
+    let payload = {
+      idx: idx,
+      game: selectedGame
+    }
+
+    dispatch(pickAndUpdate(payload));
+    
   }
 
   return(

@@ -6,6 +6,15 @@ const reducer = (selectedGame = {}, action) => {
       }  else {
         return selectedGame;
       }
+
+
+    case 'PICK_PAIR':
+      if(action.payload){
+        return selectedGame = action.payload;
+      }else{
+        break;
+      }
+  
     default:
       return selectedGame;
   }

@@ -9,7 +9,7 @@ import TerrainRoundedIcon from '@mui/icons-material/TerrainRounded';
 function GameCards(props){
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
-  console.log(games); 
+
   return(
     !games.length ? <CircularProgress/> :
     <>
