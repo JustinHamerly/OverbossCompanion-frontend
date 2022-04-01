@@ -1,6 +1,5 @@
 import * as api from '../api';
 
-
 // action creators
 
 export const getGames = () => async (dispatch) => {
@@ -41,31 +40,8 @@ export const selectGame = (game) => async (dispatch) => {
 
 export const pickAndUpdate = (payload) => async (dispatch) => {
   try{
-    let gameToUpdate = payload.game;
-    const index = payload.idx;
-    console.log(index)
-
-    const selectedToken = gameToUpdate.display[index].token;
-    const selectedTile = gameToUpdate.display[index].tile;
-    let lastPlayer = gameToUpdate.players.shift();
-    lastPlayer.tiles.push(selectedTile);
-    lastPlayer.tokens.push(selectedToken);
-
-    const newToken = gameToUpdate.tokenPool.pop();
-    const newTile = gameToUpdate.tilePool.pop();
-    const newPair = {
-      token: newToken,
-      tile: newTile,
-    }
-
-    gameToUpdate.players.push(lastPlayer)
-    
-    gameToUpdate.display.shift()
-    gameToUpdate.display.push(newPair);
-
-    console.log(gameToUpdate)
-
-    await dispatch({type: 'PICK_PAIR', payload: gameToUpdate})
+    await dispatch({type: 'PICK_PAIR', payload: payload});
+    await api.updateGame(payload._id, payload)
   }catch(error){
     console.log(error.message);
   }
