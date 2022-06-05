@@ -5,7 +5,7 @@ import { pickAndUpdate } from "../../../redux/actions/games";
 
 function TileDisplay() {
   const dispatch = useDispatch();
-  let selectedGame = useSelector((state) => state.selectedGame);
+  let selectedGame = useSelector((state) => state.selectedGame)
 
   const handlePick = (idx) => {
     let gameToUpdate = selectedGame;
@@ -25,13 +25,14 @@ function TileDisplay() {
     gameToUpdate.display.push(newPair);
     console.log(gameToUpdate);
     dispatch(pickAndUpdate(gameToUpdate));
+  
   }
-  console.log(selectedGame.display)
+
   return (
     <Container id="display">
       {selectedGame.display ?
-        selectedGame.display.map(set => (
-          <Paper key={selectedGame.display.indexOf(set)}>
+        selectedGame.display.map((set, idx) => (
+          <Paper key={idx}>
             <Typography>Tile: {set.tile.tileName}</Typography>
             <Typography>{selectedGame.display.indexOf(set)}</Typography>
             <img src={set.tile.tileImg} alt={set.tile.tileName}></img>

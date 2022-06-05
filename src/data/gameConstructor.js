@@ -27,8 +27,16 @@ NewGame.prototype.generatePools = async function(){
   }
   for (let i=0; i<this.terrain.length; i++){
     let terrainobj = terrainTypes.get(this.terrain[i]);
-    for (let j=0; j<12; j++){
-      this.tilePool.push(new Tile(terrainobj.type, terrainobj.tileImg, terrainobj.tileDesc));
+    if(terrainobj.variants){
+      let variants = terrainobj.variants;
+      console.log(variants)
+      for (let j=0; j<12; j++){
+        this.tilePool.push(new Tile(terrainobj.type, terrainobj.tileImg, terrainobj.tileDesc, variants[j]));
+      }
+    }else{
+      for (let j=0; j<12; j++){
+        this.tilePool.push(new Tile(terrainobj.type, terrainobj.tileImg, terrainobj.tileDesc));
+      }
     }
     for (let j=0; j<10; j++){
       this.tokenPool.push(new Token(terrainobj.creature, terrainobj.tokenImg, terrainobj.creature));
@@ -61,10 +69,11 @@ NewGame.prototype.addInitialPairs = function() {
   }
 }
 
-function Tile(tileName, tileImg, desc){
+function Tile(tileName, tileImg, desc, variant=null){
   this.tileName = tileName;
   this.tileImg = tileImg;
   this.description = desc;
+  this.variant = variant;
   this.type = null;
 }
 
