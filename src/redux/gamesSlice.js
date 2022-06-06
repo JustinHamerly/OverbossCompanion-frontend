@@ -4,7 +4,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchAll = createAsyncThunk('games/fetchAll', async () => {
   const allGames = await api.fetchGames();
-  console.log(allGames)
   return allGames.data;
 })
 
@@ -29,13 +28,11 @@ const gamesOptions = {
       state.status = 'loading games';
     },
     [fetchAll.fulfilled]: (state, action) => {
-      console.log(action.payload);
-      state.status = 'fetch succeeded';
+      state.status = 'games loaded';
       state.games = action.payload;
     },
     [fetchAll.rejected]: (state, action) => {
-      console.log(action)
-      state.status = 'rejected';
+      state.status = 'rejected fetch';
     },
     [createNew.pending]: (state, action) => {
       state.status = 'creating game';

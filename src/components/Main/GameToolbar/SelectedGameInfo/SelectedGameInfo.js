@@ -4,7 +4,6 @@ import {useSelector} from 'react-redux';
 function SelectedGameInfo() {
 
   const selectedGame = useSelector((state) => state.activeGame);
-  console.log(selectedGame);
 
   return(
     <div>

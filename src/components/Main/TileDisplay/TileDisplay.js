@@ -11,15 +11,12 @@ function TileDisplay() {
   const handlePick = (idx) => {
     let gameToUpdate = JSON.parse(JSON.stringify(selectedGame));
 
-    console.log(gameToUpdate)
-
     const selectedToken = gameToUpdate.display[idx].token;
     const selectedTile = gameToUpdate.display[idx].tile;
 
     handlePlayerChanges(gameToUpdate, selectedToken, selectedTile);
     handleDisplayChanges(gameToUpdate, idx);
 
-    console.log(gameToUpdate)
     dispatch(pickAndUpdate(gameToUpdate));
   }
 
@@ -27,7 +24,6 @@ function TileDisplay() {
     let lastPlayer = game.players.shift();
     lastPlayer.tiles.push(tile);
     lastPlayer.tokens.push(token);
-    console.log(lastPlayer);
     game.players.push(lastPlayer);
   }
 
