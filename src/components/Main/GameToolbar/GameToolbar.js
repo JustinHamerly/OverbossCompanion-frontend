@@ -5,7 +5,7 @@ import DoubleArrowRoundedIcon from '@mui/icons-material/DoubleArrowRounded';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import Form from './NewGameForm/NewGameForm';
 import SelectedGameInfo from './SelectedGameInfo/SelectedGameInfo';
-import useStyles from './styles';;
+import useStyles from './styles';
 
 function GameToolbar() {
   const classes = useStyles();

@@ -1,14 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-
-import reducers from './redux/reducers';
+import { configureStore } from '@reduxjs/toolkit'
 
 import App from './App';
 
-const store = createStore(reducers, compose(applyMiddleware(thunk)));
+import activeGameReducer from './redux/activeGameSlice';
+import gamesReducer from './redux/gamesSlice';
+
+const store = configureStore({
+  reducer: {
+    activeGame: activeGameReducer,
+    games: gamesReducer
+  }
+});
+
+
+const printCurrentState = () => {
+  const state = store.getState();
+  console.log(state);
+}
+ 
+store.subscribe(printCurrentState);
 
 ReactDOM.render(
   <Provider store={store} >

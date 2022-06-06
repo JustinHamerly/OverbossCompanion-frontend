@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Button, Paper, Dialog, DialogContent, DialogActions, DialogTitle, DialogContentText, Modal } from '@material-ui/core';
 import NewGame from '../../../../data/gameConstructor.js';
 import { useDispatch } from 'react-redux';
-import { createGame } from '../../../../redux/actions/games';
+import { createNew } from '../../../../redux/gamesSlice';
 import useStyles from './styles.js';
 
 const terrainTypes = require('../../../../data/terrainTypes.js');
@@ -93,7 +93,7 @@ function NewGameForm(props) {
   }
   
   const handleConfirm = () => {
-    dispatch(createGame(gameData));
+    dispatch(createNew(gameData));
     setOpen(false);
     props.setModalOpen(false);
   }

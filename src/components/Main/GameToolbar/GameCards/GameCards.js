@@ -1,14 +1,14 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectGame } from '../../../../redux/actions/games';
 import { Typography, Card, Button, CircularProgress } from '@material-ui/core';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import TerrainRoundedIcon from '@mui/icons-material/TerrainRounded';
 import DeleteDialog from './DeleteDialog/DeleteDialog';
-import { deleteGame } from '../../../../redux/actions/games';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
+import { selectGame } from '../../../../redux/activeGameSlice';
+import { deleteGame } from '../../../../redux/gamesSlice';
 
-function GameCards(props) {
+function GameCards() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
 
@@ -28,17 +28,23 @@ function GameCards(props) {
   }
 
   return (
-    !games.length ? <CircularProgress /> :
+    !games.games.length
+      ?
+      <>
+        <CircularProgress />
+        <p>{games.status}</p>
+      </>
+      :
       <>
         {
-          !games.length ? <Typography>No Games</Typography> : (
+          !games.games.length ? <Typography>No Games</Typography> : (
             <Fragment>
-              {games[0].map(game => (
+              {games.games.map(game => (
                 <Card variant="outlined" key={game._id}>
-                  <Typography>GAME {games[0].indexOf(game) + 1}</Typography>
+                  <Typography>GAME {games.games.indexOf(game) + 1}</Typography>
                   <Typography><GroupsRoundedIcon /> {game.players.map(player => player.name.toUpperCase()).join(', ')}</Typography>
                   <Typography><TerrainRoundedIcon /> {game.terrain.join(', ')}</Typography>
-                  <Button onClick={() => { dispatch(selectGame(game)); }}>
+                  <Button onClick={() => dispatch(selectGame(game))}>
                     <AutoAwesomeRoundedIcon />
                     <Typography>Select Game</Typography>
                   </Button>
