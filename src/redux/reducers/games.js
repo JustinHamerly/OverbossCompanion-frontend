@@ -1,15 +1,23 @@
 const reducer = (games = [], action) => {
   switch (action.type) {
-    case 'FETCH_ALL':
-      if (action.payload){
+
+    case 'games/fetchAll':
+      if (action.payload) {
         return [...games, action.payload];
-      }  else {
+      } else {
         return games;
       }
-    case 'CREATE':
+
+    case 'games/createNew':
       return [...games, action.payload];
+
+    case 'games/delete':
+      const filteredGames = games.filter(game => game._id !== action.payload);
+      return filteredGames;
+
     default:
       return games;
+
   }
 }
 

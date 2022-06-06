@@ -29,7 +29,6 @@ NewGame.prototype.generatePools = async function(){
     let terrainobj = terrainTypes.get(this.terrain[i]);
     if(terrainobj.variants){
       let variants = terrainobj.variants;
-      console.log(variants)
       for (let j=0; j<12; j++){
         this.tilePool.push(new Tile(terrainobj.type, terrainobj.tileImg, terrainobj.tileDesc, variants[j]));
       }

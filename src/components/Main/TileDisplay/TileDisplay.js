@@ -1,5 +1,6 @@
-import { Container, Paper, Typography, Button } from "@material-ui/core";
 import { useSelector, useDispatch } from 'react-redux';
+import { Container, Paper, Typography, Button } from "@material-ui/core";
+
 import { pickAndUpdate } from "../../../redux/actions/games";
 
 
@@ -11,21 +12,28 @@ function TileDisplay() {
     let gameToUpdate = selectedGame;
     const selectedToken = gameToUpdate.display[idx].token;
     const selectedTile = gameToUpdate.display[idx].tile;
-    let lastPlayer = gameToUpdate.players.shift();
-    lastPlayer.tiles.push(selectedTile);
-    lastPlayer.tokens.push(selectedToken);
-    const newToken = gameToUpdate.tokenPool.pop();
-    const newTile = gameToUpdate.tilePool.pop();
+    handlePlayerChanges(gameToUpdate, selectedToken, selectedTile);
+    handleDisplayChanges(gameToUpdate);
+    console.log(gameToUpdate)
+    dispatch(pickAndUpdate(gameToUpdate));
+  }
+
+  const handlePlayerChanges = (game, tile, token) => {
+    let lastPlayer = game.players.shift();
+    lastPlayer.tiles.push(tile);
+    lastPlayer.tokens.push(token);
+    game.players.push(lastPlayer);
+  }
+
+  const handleDisplayChanges = (game) => {
+    const newToken = game.tokenPool.pop();
+    const newTile = game.tilePool.pop();
     const newPair = {
       token: newToken,
       tile: newTile,
     }
-    gameToUpdate.players.push(lastPlayer)
-    gameToUpdate.display.shift()
-    gameToUpdate.display.push(newPair);
-    console.log(gameToUpdate);
-    dispatch(pickAndUpdate(gameToUpdate));
-  
+    game.display.shift()
+    game.display.push(newPair);
   }
 
   return (

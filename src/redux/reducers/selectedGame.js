@@ -1,16 +1,22 @@
 const reducer = (selectedGame = {}, action) => {
   switch (action.type) {
-    case 'SELECT_GAME':
+    case 'activeGame/selectActive':
       if (action.payload){
-        return selectedGame = action.payload;
+        return action.payload;
       }  else {
         return selectedGame;
       }
 
-
-    case 'PICK_PAIR':
+    case 'activeGame/pickAndUpdate':
       if(action.payload){
-        return selectedGame = action.payload;
+        return action.payload;
+      }else{
+        break;
+      }
+
+    case 'activeGame/saveAndUpdate':
+      if(action.payload){
+        return action.payload;
       }else{
         break;
       }

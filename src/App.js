@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { getGames } from './redux/actions/games';
@@ -10,7 +10,9 @@ function App() {
 
   const dispatch = useDispatch();
   
-  dispatch(getGames());
+  useEffect(() => {
+    dispatch(getGames());
+  }, [dispatch])
 
   return (
     <Fragment>
