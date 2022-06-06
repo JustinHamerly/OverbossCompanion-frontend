@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Paper, Typography, Button } from "@material-ui/core";
 
+import TileTokenPair from './TileTokenPair/TileTokenPair';
+
 import { pickAndUpdate } from "../../../../redux/activeGameSlice";
 
 
@@ -57,14 +59,19 @@ function TileDisplay() {
         selectedGame.display.length ?
 
           selectedGame.display.map((set, idx) => (
-            <Paper key={idx}>
-              <Typography>Tile: {set.tile.tileName}</Typography>
-              <Typography>{selectedGame.display.indexOf(set)}</Typography>
-              <img src={set.tile.tileImg} alt={set.tile.tileName}></img>
-              <Typography>Token: {set.token.tokenName}</Typography>
-              <img src={set.token.tokenImg} alt={set.tile.tileName}></img>
-              <Button onClick={() => { handlePick(selectedGame.display.indexOf(set)) }}>Pick Pair</Button>
-            </Paper>
+            <TileTokenPair 
+              key={idx} 
+              set={set}
+              handlePick={handlePick}
+            />
+            // <Paper key={idx}>
+            //   <Typography>Tile: {set.tile.tileName}</Typography>
+            //   <Typography>{selectedGame.display.indexOf(set)}</Typography>
+            //   <img src={set.tile.tileImg} alt={set.tile.tileName}></img>
+            //   <Typography>Token: {set.token.tokenName}</Typography>
+            //   <img src={set.token.tokenImg} alt={set.tile.tileName}></img>
+            //   <Button onClick={() => { handlePick(selectedGame.display.indexOf(set)) }}>Pick Pair</Button>
+            // </Paper>
           ))
 
           :
