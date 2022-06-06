@@ -6,6 +6,7 @@ import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import Form from './NewGameForm/NewGameForm';
 import SelectedGameInfo from './SelectedGameInfo/SelectedGameInfo';
 import useStyles from './styles';
+import TileDisplay from './TileDisplay/TileDisplay';
 
 function GameToolbar() {
   const classes = useStyles();
@@ -34,6 +35,7 @@ function GameToolbar() {
           New Game
         </Button>
         <SelectedGameInfo />
+        <TileDisplay />
       </div>
 
       <Drawer open={drawerOpen} onClose={handleDrawerClose} >

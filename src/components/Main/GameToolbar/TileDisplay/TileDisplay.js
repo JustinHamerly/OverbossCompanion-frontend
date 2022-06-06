@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Paper, Typography, Button } from "@material-ui/core";
 
-import { pickAndUpdate } from "../../../redux/activeGameSlice";
+import { pickAndUpdate } from "../../../../redux/activeGameSlice";
 
 
 function TileDisplay() {
