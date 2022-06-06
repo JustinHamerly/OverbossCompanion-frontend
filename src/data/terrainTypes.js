@@ -89,18 +89,18 @@ terrainTypes.set(
       table: "# of unique Camps / total points: 1/1, 2/4, 3/9, 4+/16"
     },
     variants: [
-      "blue",
-      "blue",
-      "red",
-      "red",
-      "orange",
-      "orange",
-      "purple",
-      "purple",
-      "yellow",
-      "yellow",
-      "black",
-      "black"
+      "BLUE",
+      "BLUE",
+      "RED",
+      "RED",
+      "ORANGE",
+      "ORANGE",
+      "PURPLE",
+      "PURPLE",
+      "YELLOW",
+      "YELLOW",
+      "BLACK",
+      "BLACK"
     ]
   }
 )

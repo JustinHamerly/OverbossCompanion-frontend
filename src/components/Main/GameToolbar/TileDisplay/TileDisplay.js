@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, Paper, Typography, Button } from "@material-ui/core";
+import { Container, Typography } from "@material-ui/core";
 
 import TileTokenPair from './TileTokenPair/TileTokenPair';
 
@@ -12,13 +12,10 @@ function TileDisplay() {
 
   const handlePick = (idx) => {
     let gameToUpdate = JSON.parse(JSON.stringify(selectedGame));
-
     const selectedToken = gameToUpdate.display[idx].token;
     const selectedTile = gameToUpdate.display[idx].tile;
-
     handlePlayerChanges(gameToUpdate, selectedToken, selectedTile);
     handleDisplayChanges(gameToUpdate, idx);
-
     dispatch(pickAndUpdate(gameToUpdate));
   }
 
@@ -31,15 +28,12 @@ function TileDisplay() {
 
   const handleDisplayChanges = (game, idx) => {
     let newToken, newTile
-
     if (game.tokenPool.length) {
       newToken = game.tokenPool.pop();
     }
-
     if (game.tilePool.length) {
       newTile = game.tilePool.pop();
     }
-
     if (newToken && newTile) {
       const newPair = {
         token: newToken,
@@ -49,35 +43,21 @@ function TileDisplay() {
     } else {
       game.display.splice(idx, 1);
     }
-
   }
 
   return (
     <Container id="display">
       {selectedGame.display ?
-
         selectedGame.display.length ?
-
           selectedGame.display.map((set, idx) => (
             <TileTokenPair 
               key={idx} 
               set={set}
               handlePick={handlePick}
             />
-            // <Paper key={idx}>
-            //   <Typography>Tile: {set.tile.tileName}</Typography>
-            //   <Typography>{selectedGame.display.indexOf(set)}</Typography>
-            //   <img src={set.tile.tileImg} alt={set.tile.tileName}></img>
-            //   <Typography>Token: {set.token.tokenName}</Typography>
-            //   <img src={set.token.tokenImg} alt={set.tile.tileName}></img>
-            //   <Button onClick={() => { handlePick(selectedGame.display.indexOf(set)) }}>Pick Pair</Button>
-            // </Paper>
           ))
-
           :
-
           <Typography>No More Tiles / Tokens</Typography>
-
         :
         <Typography>No Game Selected</Typography>}
     </Container>
