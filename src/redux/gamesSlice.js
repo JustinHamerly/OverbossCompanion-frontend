@@ -49,7 +49,8 @@ const gamesOptions = {
     },
     [removeGame.fulfilled]: (state, action) => {
       state.status = 'game removed';
-      state.games.filter(game => game._id !== action.payload);
+      console.log(action.payload)
+      state.games = state.games.filter(game => game._id !== action.payload);
     },
     [removeGame.rejected]: (state, action) => {
       state.status = 'failed to delete game';

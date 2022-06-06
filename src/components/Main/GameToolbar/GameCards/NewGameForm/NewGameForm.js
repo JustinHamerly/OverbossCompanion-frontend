@@ -1,11 +1,11 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Paper, Dialog, DialogContent, DialogActions, DialogTitle, DialogContentText, Modal } from '@material-ui/core';
-import NewGame from '../../../../data/gameConstructor.js';
+import NewGame from '../../../../../data/gameConstructor.js';
 import { useDispatch } from 'react-redux';
-import { createNew } from '../../../../redux/gamesSlice';
+import { createNew } from '../../../../../redux/gamesSlice';
 import useStyles from './styles.js';
 
-const terrainTypes = require('../../../../data/terrainTypes.js');
+const terrainTypes = require('../../../../../data/terrainTypes');
 const terrainKeys = Array.from(terrainTypes.default.keys());
 
 function NewGameForm(props) {
