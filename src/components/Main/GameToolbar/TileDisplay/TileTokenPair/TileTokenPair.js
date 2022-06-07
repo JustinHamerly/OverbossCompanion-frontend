@@ -20,7 +20,7 @@ const TileTokenPair = (props) => {
         <Typography>Token: {props.set.token.tokenName}</Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={() => { props.handlePick(selectedGame.display.indexOf(props.set)) }}>Pick Pair</Button>
+        <Button onClick={() => { props.handlePick(selectedGame.data.display.indexOf(props.set)) }}>Pick Pair</Button>
       </CardActions>
     </Card>
   )

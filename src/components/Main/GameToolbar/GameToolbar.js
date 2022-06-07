@@ -1,5 +1,3 @@
-import React from 'react';
-
 import SelectedGameInfo from './SelectedGameInfo/SelectedGameInfo';
 import useStyles from './styles';
 import TileDisplay from './TileDisplay/TileDisplay';

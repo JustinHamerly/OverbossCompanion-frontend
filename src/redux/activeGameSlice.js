@@ -10,12 +10,26 @@ export const saveActiveGame = createAsyncThunk('activeGame/saveActive', async (g
 const activeGameOptions = {
   name: 'activeGame',
   initialState: {
-    activeGame: {},
+    data: {},
+    history: [],
     status: '',
   },
   reducers: {
-    selectGame: (state, action) => state = action.payload,
-    pickAndUpdate: (state, action) => state = action.payload
+    selectGame: (state, action) => state = {
+      ...state,
+      data: action.payload,
+      status: 'game selected'
+    },
+    pickAndUpdate: (state, action) => state = {
+      history: [...state.history, state.data],
+      data: action.payload,
+      status: 'updated active game'
+    },
+    undoPick: (state, action) => state = {
+      data: state.history[state.history.length - 1],
+      history: state.history.slice(0,-1),
+      status: 'last pick undone'
+    }
   },
   extraReducers: {
     [saveActiveGame.pending]: (state, action) => {
@@ -23,7 +37,7 @@ const activeGameOptions = {
     },
     [saveActiveGame.fulfilled]: (state, action) => {
       state.status = 'game saved';
-      state.games = action.payload;
+      state.data = action.payload;
     },
     [saveActiveGame.rejected]: (state, action) => {
       state.status = 'game not saved';
@@ -33,5 +47,5 @@ const activeGameOptions = {
 
 const activeGameSlice = createSlice(activeGameOptions);
 
-export const { pickAndUpdate, selectGame } = activeGameSlice.actions;
+export const { pickAndUpdate, selectGame, undoPick } = activeGameSlice.actions;
 export default activeGameSlice.reducer;

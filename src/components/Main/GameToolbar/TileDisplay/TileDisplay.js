@@ -1,17 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Typography } from "@material-ui/core";
-
 import TileTokenPair from './TileTokenPair/TileTokenPair';
-
 import { pickAndUpdate } from "../../../../redux/activeGameSlice";
 
 
-function TileDisplay() {
+function TileDisplay(props) {
   const dispatch = useDispatch();
   let selectedGame = useSelector((state) => state.activeGame)
 
   const handlePick = (idx) => {
-    let gameToUpdate = JSON.parse(JSON.stringify(selectedGame));
+    let gameToUpdate = JSON.parse(JSON.stringify(selectedGame.data));
     const selectedToken = gameToUpdate.display[idx].token;
     const selectedTile = gameToUpdate.display[idx].tile;
     handlePlayerChanges(gameToUpdate, selectedToken, selectedTile);
@@ -47,11 +45,11 @@ function TileDisplay() {
 
   return (
     <Container id="display">
-      {selectedGame.display ?
-        selectedGame.display.length ?
-          selectedGame.display.map((set, idx) => (
-            <TileTokenPair 
-              key={idx} 
+      {selectedGame.data ?
+        selectedGame.data._id ?
+          selectedGame.data.display.map((set, idx) => (
+            <TileTokenPair
+              key={idx}
               set={set}
               handlePick={handlePick}
             />

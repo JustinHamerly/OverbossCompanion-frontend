@@ -73,7 +73,6 @@ function Tile(tileName, tileImg, desc, variant=null){
   this.tileImg = tileImg;
   this.description = desc;
   this.variant = variant;
-  this.type = null;
 }
 
 function Token(tokenName, tokenImg, desc){
