@@ -29,6 +29,11 @@ const activeGameOptions = {
       data: state.history[state.history.length - 1],
       history: state.history.slice(0,-1),
       status: 'last pick undone'
+    },
+    clearActive: (state, action) => state ={
+      data: {},
+      history: [],
+      status: ''
     }
   },
   extraReducers: {
@@ -47,5 +52,5 @@ const activeGameOptions = {
 
 const activeGameSlice = createSlice(activeGameOptions);
 
-export const { pickAndUpdate, selectGame, undoPick } = activeGameSlice.actions;
+export const { pickAndUpdate, selectGame, undoPick, clearActive } = activeGameSlice.actions;
 export default activeGameSlice.reducer;

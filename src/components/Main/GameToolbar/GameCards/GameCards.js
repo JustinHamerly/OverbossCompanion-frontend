@@ -6,7 +6,7 @@ import TerrainRoundedIcon from '@mui/icons-material/TerrainRounded';
 import DeleteDialog from './DeleteDialog/DeleteDialog';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-import { selectGame } from '../../../../redux/activeGameSlice';
+import { selectGame, clearActive } from '../../../../redux/activeGameSlice';
 import { removeGame } from '../../../../redux/gamesSlice';
 import Form from './NewGameForm/NewGameForm';
 
@@ -31,6 +31,7 @@ function GameCards() {
 
   const handleDelete = (id) => {
     dispatch(removeGame(id));
+    dispatch(clearActive())
     handleCloseDelete();
   }
 
