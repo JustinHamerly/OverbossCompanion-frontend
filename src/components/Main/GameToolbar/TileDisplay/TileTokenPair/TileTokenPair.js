@@ -3,12 +3,14 @@ import { useSelector } from 'react-redux';
 
 import { Typography, Button, Card, CardContent, CardActions } from '@material-ui/core'
 
-const TileTokenPair = (props) => {
+import useStyles from './styles';
 
+const TileTokenPair = (props) => {
+  const classes = useStyles();
   let selectedGame = useSelector((state) => state.activeGame)
 
   return (
-    <Card>
+    <Card className={classes.pair}>
       <CardContent>
         <img src={props.set.tile.tileImg} alt={props.set.tile.tileName}></img>
         <img src={props.set.token.tokenImg} alt={props.set.tile.tileName}></img>
@@ -20,7 +22,18 @@ const TileTokenPair = (props) => {
         <Typography>Token: {props.set.token.tokenName}</Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={() => { props.handlePick(selectedGame.data.display.indexOf(props.set)) }}>Pick Pair</Button>
+        <Button 
+          className={classes.button} 
+          onClick={() => { props.handlePick(selectedGame.data.display.indexOf(props.set)) }}
+        >
+          Pick Pair
+        </Button>
+        <Button 
+          className={classes.button} 
+          onClick={() => {}}
+        >
+          Info
+        </Button>
       </CardActions>
     </Card>
   )

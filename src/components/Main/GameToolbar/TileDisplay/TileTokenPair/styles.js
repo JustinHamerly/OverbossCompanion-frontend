@@ -1,15 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-  toolbar: {
+  pair: {
     display: 'flex',
+    width: '400px',
+    height: '400px',
+    margin: '10px',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '10px',
-    marginBottom: '20px',
-    backgroundColor: 'green',
-    color: 'gold',
+    color: 'purple',
   },
   button: {
     backgroundColor: 'gold',
