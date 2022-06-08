@@ -1,14 +1,9 @@
 import React from 'react'
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button, Typography } from '@material-ui/core'
-import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core'
+
 
 const DeleteDialog = (props) => {
   return (
-    <React.Fragment>
-      <Button onClick={props.handleDeleteConfirm}>
-        <DeleteForeverRoundedIcon />
-        <Typography>DELETE GAME</Typography>
-      </Button>
       <Dialog
         open={props.open}
         onClose={props.handleClose}
@@ -24,13 +19,14 @@ const DeleteDialog = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={props.deleteGame} autoFocus>
+          <Button onClick={props.deleteGame}>
             Delete
           </Button>
-          <Button onClick={props.handleClose}>Cancel</Button>
+          <Button onClick={props.handleClose}>
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
-    </React.Fragment>
   )
 }
 

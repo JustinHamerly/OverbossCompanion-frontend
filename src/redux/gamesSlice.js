@@ -48,6 +48,7 @@ const gamesOptions = {
       state.status = 'removing game';
     },
     [removeGame.fulfilled]: (state, action) => {
+      console.log(action.payload)
       state.status = 'game removed';
       state.games = state.games.filter(game => game._id !== action.payload);
     },
@@ -60,5 +61,4 @@ const gamesOptions = {
 
 const gamesSlice = createSlice(gamesOptions);
 
-export const { deleteGame } = gamesSlice.actions;
 export default gamesSlice.reducer;
