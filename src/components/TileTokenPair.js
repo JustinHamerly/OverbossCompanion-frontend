@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 
 import { Typography, Button, Card, CardContent, CardActions } from '@material-ui/core'
 
-import useStyles from './styles';
+// import useStyles from './styles';
 
 const TileTokenPair = (props) => {
-  const classes = useStyles();
+  // const classes = useStyles();
   let selectedGame = useSelector((state) => state.activeGame)
 
   return (
-    <Card className={classes.pair}>
+    <Card className="pair">
       <CardContent>
         <img src={props.set.tile.tileImg} alt={props.set.tile.tileName}></img>
         <img src={props.set.token.tokenImg} alt={props.set.tile.tileName}></img>
@@ -23,13 +23,13 @@ const TileTokenPair = (props) => {
       </CardContent>
       <CardActions>
         <Button 
-          className={classes.button} 
+          className="button" 
           onClick={() => { props.handlePick(selectedGame.data.display.indexOf(props.set)) }}
         >
           Pick Pair
         </Button>
         <Button 
-          className={classes.button} 
+          className="button"
           onClick={() => {}}
         >
           Info

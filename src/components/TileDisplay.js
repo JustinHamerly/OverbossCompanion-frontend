@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Typography } from "@material-ui/core";
-import TileTokenPair from './TileTokenPair/TileTokenPair';
-import { pickAndUpdate } from "../../../../redux/activeGameSlice";
-import useStyles from './styles'
+import TileTokenPair from './TileTokenPair';
+import { pickAndUpdate } from "../redux/activeGameSlice";
+// import useStyles from '../GameToolbar/TileDisplay/styles'
 
 
 function TileDisplay(props) {
-  const classes = useStyles();
+  // const classes = useStyles();
   const dispatch = useDispatch();
   let selectedGame = useSelector((state) => state.activeGame)
 
@@ -46,7 +46,7 @@ function TileDisplay(props) {
   }
 
   return (
-    <Container id="display" className={classes.tileDisplay}>
+    <Container id="display" className="tileDisplay">
       {selectedGame.data ?
         selectedGame.data._id ?
           selectedGame.data.display.map((set, idx) => (

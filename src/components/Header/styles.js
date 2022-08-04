@@ -4,23 +4,61 @@ export default makeStyles((theme) => ({
   header: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
-    padding: '10px',
-    backgroundColor: 'purple',
+    height: '15%',
+    backgroundColor: 'rgb(66,44,107)',
     color: 'gold',
+    minWidth: '650px'
+  },
+  buttonInterface: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '150px',
+    height: '100%',
+  },
+  banner: {
+    display: 'flex',
+    flexDirection: 'column',
+    minWidth: '500px',
+  },
+  top: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%'
+  },
+  navigation: {
+    display: 'flex',
+    backgroundColor: 'rgb(76,95,57)',
+    justifyContent: 'space-between',
+    width: '450px',
+    margin: 'auto',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+    borderRadius: '5px'
   },
   h1: {
     fontFamily: 'Shadows Into Light',
+    fontSize: '50pt',
     display: 'inline',
-    padding: '10px'
+    padding: '10px',
+    width: '500px',
+    margin: 'auto',
+    color: 'rgb(224,241,109)'
   },
   button: {
-    backgroundColor: 'gold',
-    color: 'green',
-    width: '100px',
-    height: '70px',
-    margin: '5px',
-    fontWeight: 'bold'
+    backgroundColor: 'rgb(76,95,57)',
+    color: 'rgb(224,241,109)',
+    width: '90px',
+    height: '50px',
+    fontWeight: 'bold',
+    margin: 'auto',
+  }, 
+  navItem: {
+    color: 'rgb(224,241,109)',
+    padding: '5px',
+
   }
 }));

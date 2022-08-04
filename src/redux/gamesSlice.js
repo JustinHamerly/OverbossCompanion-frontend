@@ -24,37 +24,27 @@ const gamesOptions = {
     status: '',
   },
   extraReducers: {
-    [fetchAll.pending]: (state, action) => {
-      state.status = 'loading games';
-    },
+    [fetchAll.pending]: (state) => {state.status = 'loading games';},
     [fetchAll.fulfilled]: (state, action) => {
       state.status = 'games loaded';
       state.games = action.payload;
     },
-    [fetchAll.rejected]: (state, action) => {
-      state.status = 'rejected fetch';
-    },
-    [createNew.pending]: (state, action) => {
-      state.status = 'creating game';
-    },
+    [fetchAll.rejected]: (state) => {state.status = 'rejected fetch';},
+
+    [createNew.pending]: (state) => {state.status = 'creating game';},
     [createNew.fulfilled]: (state, action) => {
       state.status = 'game created';
       state.games.push(action.payload);
     },
-    [createNew.rejected]: (state, action) => {
-      state.status = 'failed to create game';
-    },
-    [removeGame.pending]: (state, action) => {
-      state.status = 'removing game';
-    },
+    [createNew.rejected]: (state) => {state.status = 'failed to create game';},
+
+    [removeGame.pending]: (state, action) => {state.status = 'removing game';},
     [removeGame.fulfilled]: (state, action) => {
       console.log(action.payload)
       state.status = 'game removed';
       state.games = state.games.filter(game => game._id !== action.payload);
     },
-    [removeGame.rejected]: (state, action) => {
-      state.status = 'failed to delete game';
-    },
+    [removeGame.rejected]: (state, action) => {state.status = 'failed to delete game';},
 
   }
 }

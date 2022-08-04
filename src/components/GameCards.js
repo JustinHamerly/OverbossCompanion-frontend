@@ -1,28 +1,26 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Typography, Card, Button, CircularProgress } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import TerrainRoundedIcon from '@mui/icons-material/TerrainRounded';
-import DeleteDialog from './DeleteDialog/DeleteDialog';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
-import { selectGame, clearActive } from '../../../../redux/activeGameSlice';
-import { removeGame } from '../../../../redux/gamesSlice';
-import Form from './NewGameForm/NewGameForm';
 
-function GameCards() {
+import { selectGame, clearActive } from '../redux/activeGameSlice';
+import { removeGame } from '../redux/gamesSlice';
+
+import DeleteDialog from './DeleteDialog';
+
+function GameCards(props) {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
   const selectedGame = useSelector(state => state.activeGame)
 
   const [openDelete, setOpenDelete] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState();
-
-  const handleModalClose = () => {
-    setModalOpen(false);
-  }
 
   const handleDeleteConfirm = (id) => {
     setOpenDelete(true);
@@ -51,9 +49,15 @@ function GameCards() {
       </>
       :
       <React.Fragment>
-        <Button onClick={() => setModalOpen(true)} >
+        <Button onClick={() => props.handleDrawerClose()} >
           <AddCircleRoundedIcon />
-          New Game
+          CLOSE
+        </Button>
+        <Button>
+          <Link to='/new' onClick={() => props.handleDrawerClose()}>
+            <AddCircleRoundedIcon />
+            NEW GAME
+          </Link>
         </Button>
         {
           !games.games.length ?
@@ -69,7 +73,6 @@ function GameCards() {
                     <AutoAwesomeRoundedIcon />
                     <Typography>Select Game</Typography>
                   </Button>
-                  <p>{game._id}</p>
                   <Button onClick={() => handleDeleteConfirm(game._id)}>
                     <DeleteForeverRoundedIcon />
                     <Typography>DELETE GAME</Typography>
@@ -84,7 +87,6 @@ function GameCards() {
               ))}
             </Fragment>
         }
-        <Form modalOpen={modalOpen} setModalOpen={setModalOpen} handleModalClose={handleModalClose} />
       </React.Fragment>
   )
 }
