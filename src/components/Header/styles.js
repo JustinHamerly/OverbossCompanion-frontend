@@ -11,6 +11,16 @@ export default makeStyles((theme) => ({
     color: 'gold',
     minWidth: '650px'
   },
+  myGamesIcon: {
+    height: 30,
+    width: 30,
+    color: 'gold'
+  },
+  myGamesText: {
+    color: 'gold',
+    fontFamily: 'Shadows Into Light',
+    fontSize: '24px'
+  },
   buttonInterface: {
     display: 'flex',
     flexDirection: 'column',
@@ -21,23 +31,13 @@ export default makeStyles((theme) => ({
   },
   banner: {
     display: 'flex',
-    flexDirection: 'column',
     minWidth: '500px',
+    padding: 10
   },
   top: {
     display: 'flex',
     justifyContent: 'center',
     width: '100%'
-  },
-  navigation: {
-    display: 'flex',
-    backgroundColor: 'rgb(76,95,57)',
-    justifyContent: 'space-between',
-    width: '450px',
-    margin: 'auto',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-    borderRadius: '5px'
   },
   h1: {
     fontFamily: 'Shadows Into Light',
@@ -45,6 +45,12 @@ export default makeStyles((theme) => ({
     display: 'inline',
     padding: '10px',
     width: '500px',
+    margin: 'auto',
+    color: 'rgb(224,241,109)'
+  },
+  castleIcon: {
+    height: 50,
+    width: 50,
     margin: 'auto',
     color: 'rgb(224,241,109)'
   }

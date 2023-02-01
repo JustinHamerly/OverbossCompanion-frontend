@@ -35,8 +35,9 @@ const NavMenu = () => {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={openMenu}
+        className={classes.menuIcon}
       >
-        <ListRoundedIcon alt='site menu' />
+        <ListRoundedIcon className={classes.menuIcon} alt='site menu' />
       </Button>
       <Menu
         id="basic-menu"
