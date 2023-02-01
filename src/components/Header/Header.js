@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
-import { NavLink } from 'react-router-dom';
-
 import { AppBar, Typography, Button, Drawer } from '@material-ui/core';
 import DoubleArrowRoundedIcon from '@mui/icons-material/DoubleArrowRounded';
 
-import useStyles from './styles.js';
-
 import GameCards from '../GameCards';
+import NavMenu from './Menu.js';
+
+import useStyles from './styles.js';
 
 function Header(props) {
   const classes = useStyles();
@@ -39,15 +38,9 @@ function Header(props) {
 
         <Typography variant="h1" align="center" className={classes.h1}>Overboss Companion</Typography>
 
-        <nav className={classes.navigation}>
-          <NavLink to="/" className={classes.navItem}>HOME</NavLink>
-          <NavLink to="/new" className={classes.navItem}>NEW GAME</NavLink>
-          <NavLink to="/active" className={classes.navItem}>ACTIVE GAME</NavLink>
-          <NavLink to="/login" className={classes.navItem}>LOGIN</NavLink>
-          <NavLink to="/profile" className={classes.navItem}>PROFILE</NavLink>
-        </nav>
-
       </div>
+
+      <NavMenu />
 
       
 

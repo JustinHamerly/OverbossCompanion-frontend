@@ -47,18 +47,5 @@ export default makeStyles((theme) => ({
     width: '500px',
     margin: 'auto',
     color: 'rgb(224,241,109)'
-  },
-  button: {
-    backgroundColor: 'rgb(76,95,57)',
-    color: 'rgb(224,241,109)',
-    width: '90px',
-    height: '50px',
-    fontWeight: 'bold',
-    margin: 'auto',
-  }, 
-  navItem: {
-    color: 'rgb(224,241,109)',
-    padding: '5px',
-
   }
 }));

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Paper, Dialog, DialogContent, DialogActions, DialogTitle, DialogContentText, Modal } from '@material-ui/core';
+import { Button, Paper, Dialog, DialogContent, DialogActions, DialogTitle, DialogContentText } from '@material-ui/core';
 import NewGame from '../data/gameConstructor.js';
 import { useDispatch } from 'react-redux';
 import { createNew } from '../redux/gamesSlice';
