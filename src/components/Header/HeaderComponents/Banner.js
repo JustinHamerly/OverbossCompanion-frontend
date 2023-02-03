@@ -9,9 +9,12 @@ const Banner = () => {
 
   return (
     <div className={classes.banner}>
-      <FortRoundedIcon className={classes.castleIcon} />
-      <Typography variant="h1" align="center" className={classes.h1}>
-        Overboss Companion
+      <Typography variant="h1" align="center" className={classes.title}>
+        OVERBOSS
+      </Typography>
+      <FortRoundedIcon className={classes.icon} fontSize={'large'} />
+      <Typography variant="h1" align="center" className={classes.title}>
+        COMPANION
       </Typography>
     </div>
   )

@@ -4,11 +4,14 @@ export default makeStyles((theme) => ({
   header: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    height: '15%',
-    backgroundColor: 'rgb(66,44,107)',
-    color: 'gold',
-    minWidth: '200px'
+    background: 'linear-gradient(#2B1D46, #39265D, #422C6B)',
+    [theme.breakpoints.down('mobile')]: {
+      justifyContent: 'center',
+    },
+    [theme.breakpoints.up('lg')]: {
+      justifyContent: 'space-around'
+    },
   }
 }));

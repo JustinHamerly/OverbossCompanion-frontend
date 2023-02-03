@@ -2,23 +2,32 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   banner: {
+    color: 'rgb(224,241,109)',
+    padding: '5px',
     display: 'flex',
-    minWidth: '500px',
-    padding: 10
+    alignItems: 'center',
+    height: '100%',
   },
-  h1: {
-    fontFamily: 'Shadows Into Light',
-    fontSize: '50pt',
+  title: {
+    fontFamily: 'Titan One', 
     display: 'inline',
-    padding: '10px',
-    width: '500px',
-    margin: 'auto',
-    color: 'rgb(224,241,109)'
+    WebkitTextStroke: '2px #282E04',
+    textShadow: '0px -3px #FFDA33',
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '20pt',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '40pt',
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '50pt'
+    },
   },
-  castleIcon: {
-    height: 50,
-    width: 50,
-    margin: 'auto',
-    color: 'rgb(224,241,109)'
+  icon: {
+    color: '#FFDA33',
+    margin: '0 10px',
   }
 }));
