@@ -1,10 +1,11 @@
 import {Routes, Route} from 'react-router-dom'
 
+import About from './About';
+import Home from './Home';
 import GameToolbar from './GameToolbar';
-import Welcome from './Welcome';
 import NewGameForm from './NewGameForm';
 
-import useStyles from './styles.js';
+import useStyles from './styles/mainStyles.js';
 
 function Main() {
   const classes = useStyles();
@@ -12,7 +13,8 @@ function Main() {
   return (
     <main className={classes.main}>
       <Routes>
-        <Route path='/' element={<Welcome />} />
+        <Route index element={<Home />} />
+        <Route path='/about' element={<About />} />
         <Route path='/active' element={<GameToolbar />} />
         <Route path='/new' element={<NewGameForm />} />
         <Route path='/profile' element={<p>Profile Component Here</p>} />

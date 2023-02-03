@@ -1,15 +1,19 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchAll } from './redux/gamesSlice';
-
 import {BrowserRouter} from 'react-router-dom'
 
-import Main from './components/Main';
+import { fetchAll } from './redux/gamesSlice';
+
+import Main from './components/Main/Main';
 import Header from './components/Header/Header';
+import GamesDrawer from './components/Global/GamesDrawer'
 
 function App() {
 
   const dispatch = useDispatch();
+
+  const [gamesDrawerOpen, setGamesDrawerOpen] = useState(false);
+  const handleGamesDrawerClose = () => setGamesDrawerOpen(false);
   
   useEffect(() => {
     dispatch(fetchAll());
@@ -17,8 +21,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
+      <Header 
+        setGamesDrawerOpen={setGamesDrawerOpen} 
+      />
       <Main />
+
+      <GamesDrawer 
+        gamesDrawerOpen={gamesDrawerOpen} 
+        handleGamesDrawerClose={handleGamesDrawerClose} 
+      />
     </BrowserRouter>
   );
 

@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Paper, Dialog, DialogContent, DialogActions, DialogTitle, DialogContentText, Modal } from '@material-ui/core';
-import NewGame from '../data/gameConstructor.js';
 import { useDispatch } from 'react-redux';
-import { createNew } from '../redux/gamesSlice';
-// import useStyles from '../GameToolbar/GameCards/NewGameForm/styles.js.js';
+import { Button, Paper, Dialog, DialogContent, DialogActions, DialogTitle, DialogContentText } from '@material-ui/core';
 
-const terrainTypes = require('../data/terrainTypes');
-const terrainKeys = Array.from(terrainTypes.default.keys());
+import { createNew } from '../../redux/gamesSlice';
+
+import NewGame from '../../data/gameConstructor.js';
 
 function NewGameForm(props) {
-  // const classes = useStyles();
   const dispatch = useDispatch();
 
+  const terrainTypes = require('../../data/terrainTypes');
+  const terrainKeys = Array.from(terrainTypes.default.keys());
+  
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [checkedCount, updateCheckedCount] = useState(0);
   const [selectedTerrain, setSelectedTerrain] = useState([]);
   const [playerCount, setPlayerCount] = useState(2);
   const [players, setPlayers] = useState([]);
   const [open, setOpen] = useState(false);
-
   const [gameData, setGameData] = useState({});
 
   useEffect(() => {
