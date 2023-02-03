@@ -1,7 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { MenuItem } from '@material-ui/core';
-import useStyles from './menuStyles.js';
+
+import useStyles from './styles/menuStyles.js';
 
 const MenuListItem = ({ name, route, icon, closeMenu}) => {
   const classes = useStyles();

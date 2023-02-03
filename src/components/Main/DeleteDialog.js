@@ -1,12 +1,11 @@
 import React from 'react'
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core'
 
-
-const DeleteDialog = (props) => {
+const DeleteDialog = ({open, handleClose, deleteGame}) => {
   return (
       <Dialog
-        open={props.open}
-        onClose={props.handleClose}
+        open={open}
+        onClose={handleClose}
         aria-labelledby="delete confirmation box"
         aria-describedby="Confirm to delete game or cancel"
       >
@@ -19,10 +18,10 @@ const DeleteDialog = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={props.deleteGame}>
+          <Button onClick={deleteGame}>
             Delete
           </Button>
-          <Button onClick={props.handleClose}>
+          <Button onClick={handleClose}>
             Cancel
           </Button>
         </DialogActions>

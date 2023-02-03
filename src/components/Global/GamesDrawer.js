@@ -1,6 +1,7 @@
 import React from 'react'
 import { Drawer, Typography } from '@material-ui/core';
-import GameCards from '../../GameCards';
+
+import GameCards from './GameCards'
 
 const GamesDrawer = ({ gamesDrawerOpen, handleGamesDrawerClose }) => {
   return (

@@ -8,8 +8,9 @@ import ExitToAppRoundedIcon from '@mui/icons-material/ExitToAppRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 
-import useStyles from './menuStyles.js';
 import MenuListItem from './MenuListItem.js';
+
+import useStyles from './styles/menuStyles.js';
 
 const NavMenu = () => {
   const classes = useStyles();

@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Typography } from "@material-ui/core";
+
+import { pickAndUpdate } from "../../redux/activeGameSlice";
+
 import TileTokenPair from './TileTokenPair';
-import { pickAndUpdate } from "../redux/activeGameSlice";
-// import useStyles from '../GameToolbar/TileDisplay/styles'
 
 
 function TileDisplay(props) {

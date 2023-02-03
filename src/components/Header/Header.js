@@ -1,19 +1,14 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import { AppBar, Typography, Button } from '@material-ui/core';
 import DoubleArrowRoundedIcon from '@mui/icons-material/DoubleArrowRounded';
 import FortRoundedIcon from '@mui/icons-material/FortRounded';
 
-import GamesDrawer from './HeaderComponents/GamesDrawer';
 import NavMenu from './HeaderComponents/Menu';
 
-import useStyles from './styles.js';
+import useStyles from './styles/headerStyles.js';
 
-function Header(props) {
+function Header({ setGamesDrawerOpen }) {
   const classes = useStyles();
-
-  const [gamesDrawerOpen, setGamesDrawerOpen] = useState(false);
-  const handleGamesDrawerClose = () => setGamesDrawerOpen(false);
 
   return (
     <AppBar position="static" color="inherit" className={classes.header}>
@@ -33,8 +28,6 @@ function Header(props) {
       </div>
 
       <NavMenu />
-
-      <GamesDrawer gamesDrawerOpen={gamesDrawerOpen} handleGamesDrawerClose={handleGamesDrawerClose} />
 
 
     </AppBar>

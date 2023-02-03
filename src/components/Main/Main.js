@@ -5,7 +5,7 @@ import Home from './Home';
 import GameToolbar from './GameToolbar';
 import NewGameForm from './NewGameForm';
 
-import useStyles from './styles.js';
+import useStyles from './styles/mainStyles.js';
 
 function Main() {
   const classes = useStyles();
