@@ -4,8 +4,8 @@ import { AppBar, Typography, Button } from '@material-ui/core';
 import DoubleArrowRoundedIcon from '@mui/icons-material/DoubleArrowRounded';
 import FortRoundedIcon from '@mui/icons-material/FortRounded';
 
-import GamesDrawer from './GamesDrawer.js';
-import NavMenu from './Menu.js';
+import GamesDrawer from './HeaderComponents/GamesDrawer';
+import NavMenu from './HeaderComponents/Menu';
 
 import useStyles from './styles.js';
 
