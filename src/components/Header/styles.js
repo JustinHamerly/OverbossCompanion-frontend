@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
     height: '15%',
     backgroundColor: 'rgb(66,44,107)',
     color: 'gold',
-    minWidth: '650px'
+    minWidth: '200px'
   },
   myGamesIcon: {
     height: 30,

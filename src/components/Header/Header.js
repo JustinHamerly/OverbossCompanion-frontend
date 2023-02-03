@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import { AppBar, Typography, Button, Drawer } from '@material-ui/core';
+import { AppBar, Typography, Button } from '@material-ui/core';
 import DoubleArrowRoundedIcon from '@mui/icons-material/DoubleArrowRounded';
 import FortRoundedIcon from '@mui/icons-material/FortRounded';
 
-import GameCards from '../GameCards';
+import GamesDrawer from './GamesDrawer.js';
 import NavMenu from './Menu.js';
 
 import useStyles from './styles.js';
@@ -34,12 +34,8 @@ function Header(props) {
 
       <NavMenu />
 
+      <GamesDrawer gamesDrawerOpen={gamesDrawerOpen} handleGamesDrawerClose={handleGamesDrawerClose} />
 
-
-      <Drawer open={gamesDrawerOpen} onClose={handleGamesDrawerClose} >
-        <Typography>MY GAMES</Typography>
-        <GameCards handleDrawerClose={handleGamesDrawerClose} />
-      </Drawer>
 
     </AppBar>
   )
