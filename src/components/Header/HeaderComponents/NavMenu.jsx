@@ -9,7 +9,7 @@ import ExitToAppRoundedIcon from '@mui/icons-material/ExitToAppRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 
-import MenuListItem from './MenuListItem.js';
+import MenuListItem from './MenuListItem.jsx';
 
 import useStyles from './styles/menuStyles';
 
