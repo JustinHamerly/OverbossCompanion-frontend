@@ -3,7 +3,7 @@ import { AppBar } from '@material-ui/core';
 
 import GamesDrawerButton from './HeaderComponents/GamesDrawerButton';
 import Banner from './HeaderComponents/Banner';
-import NavMenu from './HeaderComponents/Menu';
+import NavMenu from './HeaderComponents/NavMenu';
 
 import useStyles from './styles/headerStyles.js';
 

@@ -1,14 +1,28 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
+  button: {
+    marginLeft: '10px'
+  },
   myGamesIcon: {
-    height: 30,
-    width: 30,
-    color: 'gold'
+    color: '#FFDA33'
   },
   myGamesText: {
-    color: 'gold',
-    fontFamily: 'Shadows Into Light',
-    fontSize: '24px'
+    color: 'rgb(224,241,109)',
+    WebkitTextStroke: '2px #282E04',
+    fontFamily: 'Titan One',
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '16pt',
+    },
+    [theme.breakpoints.up('md')]: {
+      textShadow: '0px -3px #FFDA33',
+      fontSize: '20pt',
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '35pt'
+    },
   }
 }));

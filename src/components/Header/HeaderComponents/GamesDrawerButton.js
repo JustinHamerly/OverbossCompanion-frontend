@@ -8,8 +8,8 @@ const GamesDrawerButton = ({setGamesDrawerOpen}) => {
   const classes = useStyles();
 
   return (
-    <Button onClick={() => setGamesDrawerOpen(true)} >
-      <DoubleArrowRoundedIcon className={classes.myGamesIcon} />
+    <Button onClick={() => setGamesDrawerOpen(true)} className={classes.button} >
+      <DoubleArrowRoundedIcon className={classes.myGamesIcon} fontSize={'large'} />
       <Typography className={classes.myGamesText}>GAMES</Typography>
     </Button>
   )
