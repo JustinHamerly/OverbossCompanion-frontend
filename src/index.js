@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit'
+import { Auth0Provider } from "@auth0/auth0-react";
 
 import App from './App';
 
@@ -26,8 +27,16 @@ store.subscribe(printCurrentState);
 
 
 ReactDOM.render(
-  <Provider store={store} >
-      <App /> 
-  </Provider>,
+  <Auth0Provider
+    domain={process.env.REACT_APP_AUTH_DOMAIN}
+    clientId={process.env.REACT_APP_CLIENT_ID}
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  >
+    <Provider store={store} >
+        <App /> 
+    </Provider>
+  </Auth0Provider>,
   document.getElementById('root')
 );
