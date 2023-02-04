@@ -30,7 +30,7 @@ const NavMenu = () => {
   }
 
   return (
-    <div >
+    <div>
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
@@ -50,42 +50,41 @@ const NavMenu = () => {
         MenuListProps={{
           'aria-labelledby': 'site menu button',
         }}
-        className={classes.menu}
       >
         <MenuListItem
           name='HOME'
           route='/'
-          icon={<HomeRoundedIcon />}
+          icon={<HomeRoundedIcon style={{marginRight: '10px'}} />}
           closeMenu={closeMenu}
         />
         <MenuListItem
           name='LOGIN'
           route='/login'
-          icon={<ExitToAppRoundedIcon />}
+          icon={<ExitToAppRoundedIcon style={{marginRight: '10px'}} />}
           closeMenu={closeMenu}
         />
         <MenuListItem
           name='PROFILE'
           route='/profile'
-          icon={<PersonRoundedIcon />}
+          icon={<PersonRoundedIcon style={{marginRight: '10px'}} />}
           closeMenu={closeMenu}
         />
         <MenuListItem
           name='NEW GAME'
           route='/new'
-          icon={<AddBoxRoundedIcon />}
+          icon={<AddBoxRoundedIcon style={{marginRight: '10px'}} />}
           closeMenu={closeMenu}
         />
         <MenuListItem
           name='ACTIVE GAME'
           route='/active'
-          icon={<GridViewRoundedIcon />}
+          icon={<GridViewRoundedIcon style={{marginRight: '10px'}} />}
           closeMenu={closeMenu}
         />
         <MenuListItem
           name='ABOUT'
           route='/about'
-          icon={<InfoRoundedIcon />}
+          icon={<InfoRoundedIcon style={{marginRight: '10px'}} />}
           closeMenu={closeMenu}
         />
       </Menu>
