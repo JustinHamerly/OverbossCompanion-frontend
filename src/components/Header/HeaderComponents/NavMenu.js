@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Button, Menu } from '@mui/material';
+import { Menu } from '@mui/material';
+import { Button } from '@material-ui/core';
 import ViewListRoundedIcon from '@mui/icons-material/ViewListRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
@@ -29,13 +30,14 @@ const NavMenu = () => {
   }
 
   return (
-    <div className={classes.button}>
+    <div >
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={openMenu}
+        className={classes.button}
       >
         <p className={classes.mText} >MENU</p>
         <ViewListRoundedIcon className={classes.menuIcon} fontSize={'large'} />
