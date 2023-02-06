@@ -6,7 +6,7 @@ import { fetchAll } from './redux/gamesSlice';
 
 import Main from './components/Main/Main';
 import Header from './components/Header/Header';
-import GamesDrawer from './components/Global/GamesDrawer'
+import GamesDrawer from './components/Global/GamesDrawer/GamesDrawer'
 
 function App() {
 

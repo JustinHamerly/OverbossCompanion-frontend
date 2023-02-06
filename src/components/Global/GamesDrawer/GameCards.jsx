@@ -1,18 +1,16 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Typography, Card, Button, CircularProgress } from '@material-ui/core';
 
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import TerrainRoundedIcon from '@mui/icons-material/TerrainRounded';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
-import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
-import { selectGame, clearActive } from '../../redux/activeGameSlice';
-import { removeGame } from '../../redux/gamesSlice';
+import { selectGame, clearActive } from '../../../redux/activeGameSlice';
+import { removeGame } from '../../../redux/gamesSlice';
 
-import DeleteDialog from '../Main/DeleteDialog';
+import DeleteDialog from '../../Main/DeleteDialog';
 
 function GameCards(props) {
   const dispatch = useDispatch();
@@ -49,16 +47,6 @@ function GameCards(props) {
       </>
       :
       <React.Fragment>
-        <Button onClick={() => props.handleDrawerClose()} >
-          <AddCircleRoundedIcon />
-          CLOSE
-        </Button>
-        <Button>
-          <Link to='/new' onClick={() => props.handleDrawerClose()}>
-            <AddCircleRoundedIcon />
-            NEW GAME
-          </Link>
-        </Button>
         {
           !games.games.length ?
             <Typography>NO GAMES</Typography>
