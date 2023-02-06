@@ -1,18 +1,18 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Typography, Card, Button, CircularProgress } from '@material-ui/core';
-
-import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
-import TerrainRoundedIcon from '@mui/icons-material/TerrainRounded';
-import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
-import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import { Typography, CircularProgress } from '@material-ui/core';
 
 import { selectGame, clearActive } from '../../../redux/activeGameSlice';
 import { removeGame } from '../../../redux/gamesSlice';
 
+import GameCard from './GameCard';
 import DeleteDialog from '../../Main/DeleteDialog';
 
+import useStyles from './styles/gameCardsStyles'
+
 function GameCards(props) {
+  const classes = useStyles();
+
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
   const selectedGame = useSelector(state => state.activeGame)
@@ -32,7 +32,7 @@ function GameCards(props) {
 
   const handleDeleteGame = () => {
     dispatch(removeGame(deleteId));
-    if(deleteId === selectedGame.data._id){
+    if (deleteId === selectedGame.data._id) {
       dispatch(clearActive())
     }
     handleCloseDelete();
@@ -41,41 +41,37 @@ function GameCards(props) {
   return (
     !games.status === 'loading games'
       ?
-      <>
+      <div>
         <CircularProgress />
-        <p>Loading Games</p>
-      </>
+        <Typography className={classes.statusText}>Loading Games</Typography>
+      </div>
       :
-      <React.Fragment>
+      <div>
         {
-          !games.games.length ?
-            <Typography>NO GAMES</Typography>
+          !games.games.length
+            ?
+            <Typography className={classes.statusText}>NO GAMES</Typography>
             :
-            <Fragment>
-              {games.games.map(game => (
-                <Card variant="outlined" key={game._id}>
-                  <Typography>GAME {games.games.indexOf(game) + 1}</Typography>
-                  <Typography><GroupsRoundedIcon /> {game.players.map(player => player.name.toUpperCase()).join(', ')}</Typography>
-                  <Typography><TerrainRoundedIcon /> {game.terrain.join(', ')}</Typography>
-                  <Button onClick={() => dispatch(selectGame(game))}>
-                    <AutoAwesomeRoundedIcon />
-                    <Typography>Select Game</Typography>
-                  </Button>
-                  <Button onClick={() => handleDeleteConfirm(game._id)}>
-                    <DeleteForeverRoundedIcon />
-                    <Typography>DELETE GAME</Typography>
-                  </Button>
-                  <DeleteDialog
-                    handleDeleteConfirm={handleDeleteConfirm}
-                    open={openDelete}
-                    handleClose={handleCloseDelete}
-                    deleteGame={handleDeleteGame}
-                  />
-                </Card>
+            <div>
+              {games.games.map((game, idx) => (
+                <GameCard
+                  game={game}
+                  key={game._id}
+                  idx={idx}
+                  openDelete={openDelete}
+                  selectGame={selectGame}
+                  handleDeleteConfirm={handleDeleteConfirm}
+                />
               ))}
-            </Fragment>
+              <DeleteDialog
+                handleDeleteConfirm={handleDeleteConfirm}
+                open={openDelete}
+                handleClose={handleCloseDelete}
+                deleteGame={handleDeleteGame}
+              />
+            </div>
         }
-      </React.Fragment>
+      </div>
   )
 }
 
