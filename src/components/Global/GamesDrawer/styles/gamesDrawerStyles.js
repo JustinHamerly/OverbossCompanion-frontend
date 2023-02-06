@@ -36,9 +36,9 @@ export default makeStyles((theme) => ({
     textDecoration: 'none',
     padding: '15px',
     backgroundColor: '#FFDA33',
+    margin: '10px',
     '&:hover':{
       backgroundColor: '#FF5533',
-      color: '#FFDA33',
     },
     borderRadius: '10px',
     [theme.breakpoints.up('xs')]: {

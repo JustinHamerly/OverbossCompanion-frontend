@@ -16,8 +16,7 @@ const GamesDrawer = ({ gamesDrawerOpen, handleGamesDrawerClose }) => {
         <Typography className={classes.drawerTitle}>MY GAMES</Typography>
         <DrawerCloseButton handleDrawerClose={handleGamesDrawerClose} />
       </div>
-      <NewGameButton handleDrawerClose={handleGamesDrawerClose} />
-      <GameCards />
+      <GameCards handleDrawerClose={handleGamesDrawerClose} />
     </Drawer>
   )
 }

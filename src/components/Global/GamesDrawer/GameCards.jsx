@@ -7,6 +7,7 @@ import { removeGame } from '../../../redux/gamesSlice';
 
 import GameCard from './GameCard';
 import DeleteDialog from '../../Main/DeleteDialog';
+import NewGameButton from './NewGameButton'
 
 import useStyles from './styles/gameCardsStyles'
 
@@ -39,39 +40,44 @@ function GameCards(props) {
   }
 
   return (
-    !games.status === 'loading games'
-      ?
-      <div>
-        <CircularProgress />
-        <Typography className={classes.statusText}>Loading Games</Typography>
-      </div>
-      :
-      <div>
-        {
-          !games.games.length
-            ?
-            <Typography className={classes.statusText}>NO GAMES</Typography>
-            :
-            <div>
-              {games.games.map((game, idx) => (
-                <GameCard
-                  game={game}
-                  key={game._id}
-                  idx={idx}
-                  openDelete={openDelete}
-                  selectGame={selectGame}
-                  handleDeleteConfirm={handleDeleteConfirm}
-                />
-              ))}
-              <DeleteDialog
-                handleDeleteConfirm={handleDeleteConfirm}
-                open={openDelete}
-                handleClose={handleCloseDelete}
-                deleteGame={handleDeleteGame}
-              />
-            </div>
-        }
-      </div>
+    <div className={classes.container}>
+      <NewGameButton handleDrawerClose={props.handleDrawerClose} />
+      {
+        !games.status === 'loading games'
+          ?
+          <div className={classes.loading}>
+            <CircularProgress />
+            <Typography className={classes.statusText}>LOADING...</Typography>
+          </div>
+          :
+          <div>
+            {
+              !games.games.length
+                ?
+                <Typography className={classes.statusText}>NO GAMES</Typography>
+                :
+                <div className={classes.cardContainer}>
+                  {games.games.map((game, idx) => (
+                    <GameCard
+                      game={game}
+                      key={game._id}
+                      idx={idx}
+                      openDelete={openDelete}
+                      selectGame={selectGame}
+                      handleDeleteConfirm={handleDeleteConfirm}
+                    />
+                  ))}
+                  <DeleteDialog
+                    handleDeleteConfirm={handleDeleteConfirm}
+                    open={openDelete}
+                    handleClose={handleCloseDelete}
+                    deleteGame={handleDeleteGame}
+                  />
+                </div>
+            }
+          </div>
+      }
+    </div>
   )
 }
 
