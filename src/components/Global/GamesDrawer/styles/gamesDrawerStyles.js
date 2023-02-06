@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles((theme) => ({
   drawerHeader: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    background: 'linear-gradient(#422C6B, #39265D, #2B1D46)',
   },
   drawerTitle: {
     fontFamily: 'Titan One',
@@ -24,7 +25,7 @@ export default makeStyles((theme) => ({
     }
   },
   closeButton: {
-    color: '#422C6B',
+    color: '#FFDA33',
     '&:hover':{
       color: '#FF5533',
     },

@@ -3,7 +3,6 @@ import { Drawer, Typography } from '@material-ui/core';
 
 import DrawerCloseButton from './DrawerCloseButton';
 import GameCards from './GameCards'
-import NewGameButton from './NewGameButton';
 
 import useStyles from './styles/gamesDrawerStyles';
 

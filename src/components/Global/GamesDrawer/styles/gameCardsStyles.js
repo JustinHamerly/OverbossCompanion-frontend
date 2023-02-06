@@ -4,9 +4,9 @@ export default makeStyles((theme) => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'green',
     padding: '20px',
-    height: '100%'
+    height: '100%',
+    background: 'linear-gradient(#2B1D46, #39265D, #422C6B)',
   },
   loading: {
     display: 'flex',
