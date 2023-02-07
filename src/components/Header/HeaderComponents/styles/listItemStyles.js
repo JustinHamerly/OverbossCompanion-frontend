@@ -12,10 +12,12 @@ export default makeStyles((theme) => ({
     borderRadius: '5px',
     border: '2px solid #282E04',
     '&:hover':{
-      color: '#FF5533',
       backgroundColor: '#ffda33'
     },
     textDecoration: 'none',
+  },
+  text: {
+    fontFamily: 'Rubik',
     fontWeight: 'bold'
   }
 }));
