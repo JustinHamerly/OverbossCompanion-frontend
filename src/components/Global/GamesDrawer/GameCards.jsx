@@ -56,7 +56,7 @@ function GameCards(props) {
                 ?
                 <Typography className={classes.statusText}>NO GAMES</Typography>
                 :
-                <div className={classes.cardContainer}>
+                <div>
                   {games.games.map((game, idx) => (
                     <GameCard
                       game={game}

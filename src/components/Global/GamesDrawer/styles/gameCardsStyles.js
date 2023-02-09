@@ -5,8 +5,8 @@ export default makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     padding: '20px',
-    height: '100%',
     background: 'linear-gradient(#2B1D46, #39265D, #422C6B)',
+    height: 'auto'
   },
   loading: {
     display: 'flex',
