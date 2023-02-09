@@ -17,11 +17,11 @@ const GameCard = ({game, idx, selectGame, handleDeleteConfirm}) => {
       <Typography className={classes.header}>GAME {idx + 1}</Typography>
       <Typography className={classes.sectionHeader}><GroupsRoundedIcon /></Typography>
       {game.players.map(player => (
-        <Typography>{player.name.toUpperCase()}</Typography>
+        <Typography className={classes.text}>{player.name.toUpperCase()}</Typography>
       ))}
       <Typography className={classes.sectionHeader}><TerrainRoundedIcon /></Typography>
       {game.terrain.map(t=> (
-        <Typography>{t}</Typography>
+        <Typography className={classes.text}>{t.toUpperCase()}</Typography>
       ))}
       <Paper className={classes.buttonMenu}>
         <Button onClick={() => dispatch(selectGame(game))} className={classes.button}>

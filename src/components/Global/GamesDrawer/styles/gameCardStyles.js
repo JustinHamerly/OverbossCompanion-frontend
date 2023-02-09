@@ -24,6 +24,8 @@ export default makeStyles(theme => ({
     textAlign: 'center',
     fontFamily: 'Rubik',
     color: '#211636',
+    padding: '10px',
+    marginBottom: '10px',
     [theme.breakpoints.down('md')]: {
       fontSize: '16pt'
     },
@@ -37,13 +39,22 @@ export default makeStyles(theme => ({
     marginTop: '3px'
   },
   text: {
-
+    fontFamily: 'Rubik',
+    textAlign: 'center',
+    color: '#422C6B',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '12pt'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '16pt',
+    },
   },
   buttonMenu: {
     display: 'flex',
     justifyContent: 'space-between',
     backgroundColor: '#e0f16d',
     borderRadius: '10px',
+    marginTop: '15px'
   },
   button: {
     fontFamily: 'Rubik',
