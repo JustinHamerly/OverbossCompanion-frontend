@@ -15,11 +15,11 @@ const GameCard = ({game, idx, selectGame, handleDeleteConfirm}) => {
   return (
     <div className={classes.card}>
       <Typography className={classes.header}>GAME {idx + 1}</Typography>
-      <Typography className={classes.sectionHeader}><GroupsRoundedIcon /></Typography>
+      <Typography className={classes.sectionHeader}><GroupsRoundedIcon fontSize={'large'}/></Typography>
       {game.players.map(player => (
         <Typography className={classes.text}>{player.name.toUpperCase()}</Typography>
       ))}
-      <Typography className={classes.sectionHeader}><TerrainRoundedIcon /></Typography>
+      <Typography className={classes.sectionHeader}><TerrainRoundedIcon fontSize={'large'}/></Typography>
       {game.terrain.map(t=> (
         <Typography className={classes.text}>{t.toUpperCase()}</Typography>
       ))}
