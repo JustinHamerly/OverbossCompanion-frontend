@@ -15,13 +15,19 @@ const GameCard = ({game, idx, selectGame, handleDeleteConfirm}) => {
   return (
     <div className={classes.card}>
       <Typography className={classes.header}>GAME {idx + 1}</Typography>
-      <Typography className={classes.sectionHeader}><GroupsRoundedIcon fontSize={'large'}/></Typography>
-      {game.players.map(player => (
-        <Typography className={classes.text}>{player.name.toUpperCase()}</Typography>
+      <Typography className={classes.sectionHeader}>
+        <GroupsRoundedIcon fontSize={'large'}/>
+      </Typography>
+      {game.players.map((player, i) => (
+        <Typography className={classes.text} key={i}>
+          {player.name.toUpperCase()}
+        </Typography>
       ))}
       <Typography className={classes.sectionHeader}><TerrainRoundedIcon fontSize={'large'}/></Typography>
-      {game.terrain.map(t=> (
-        <Typography className={classes.text}>{t.toUpperCase()}</Typography>
+      {game.terrain.map((t, i)=> (
+        <Typography className={classes.text} key={i}>
+          {t.toUpperCase()}
+        </Typography>
       ))}
       <Paper className={classes.buttonMenu}>
         <Button onClick={() => dispatch(selectGame(game))} className={classes.button}>

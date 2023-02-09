@@ -1,6 +1,19 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
+  '@global': {
+    '*::-webkit-scrollbar': {
+      width: '0.5em',
+    },
+    '*::-webkit-scrollbar-track': {
+      background: '#422C6B'
+    },
+    '*::-webkit-scrollbar-thumb': {
+      backgroundColor: '#E0F16D',
+      outline: '1px solid #422C6B',
+      borderRadius: 5
+    }
+  },
   drawerHeader: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -19,9 +32,6 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       fontSize: '30pt',
       textShadow: '0px -4px #FFDA33',
-    },
-    [theme.breakpoints.up('lg')]: {
-      fontSize: '50pt'
     }
   },
   closeButton: {
