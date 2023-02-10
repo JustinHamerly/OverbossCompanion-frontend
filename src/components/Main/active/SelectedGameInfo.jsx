@@ -2,7 +2,7 @@ import { Typography, Button } from "@material-ui/core";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
-import { saveActiveGame, undoPick } from '../../redux/activeGameSlice'
+import { saveActiveGame, undoPick } from '../../../redux/activeGameSlice'
 
 function SelectedGameInfo(props) {
   

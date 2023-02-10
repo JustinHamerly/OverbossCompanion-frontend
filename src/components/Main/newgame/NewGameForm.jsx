@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Paper, Dialog, DialogContent, DialogActions, DialogTitle, DialogContentText } from '@material-ui/core';
 
-import { createNew } from '../../redux/gamesSlice';
+import { createNew } from '../../../redux/gamesSlice';
 
-import NewGame from '../../data/gameConstructor.js';
+import NewGame from '../../../data/gameConstructor.js';
 
 function NewGameForm(props) {
   const dispatch = useDispatch();
 
-  const terrainTypes = require('../../data/terrainTypes');
+  const terrainTypes = require('../../../data/terrainTypes');
   const terrainKeys = Array.from(terrainTypes.default.keys());
   
   const [buttonDisabled, setButtonDisabled] = useState(true);
