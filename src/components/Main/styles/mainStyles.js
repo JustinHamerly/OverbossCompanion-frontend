@@ -6,7 +6,7 @@ export default makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#B3DFB3',
+    backgroundColor: '#D9EFD9',
     color: 'gold',
     minWidth: '650px',
     flex: 1
