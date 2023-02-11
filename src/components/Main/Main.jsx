@@ -1,9 +1,9 @@
 import {Routes, Route} from 'react-router-dom'
 
-import About from './About';
-import Home from './Home';
-import GameToolbar from './GameToolbar';
-import NewGameForm from './NewGameForm';
+import About from './about/About';
+import Home from './home/Home';
+import GameToolbar from './active/ActiveGame';
+import NewGameForm from './newgame/NewGameForm';
 
 import useStyles from './styles/mainStyles.js';
 

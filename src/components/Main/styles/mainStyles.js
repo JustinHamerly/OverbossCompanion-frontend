@@ -3,12 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles((theme) => ({
   main: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'green',
-    color: 'gold',
-    minWidth: '650px',
-    height: '85%'
+    backgroundColor: '#D9EFD9',
+    color: '#FFDA33',
+    flex: 1
   },
 }));

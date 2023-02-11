@@ -1,13 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Typography } from "@material-ui/core";
 
-import { pickAndUpdate } from "../../redux/activeGameSlice";
+import { pickAndUpdate } from "../../../redux/activeGameSlice";
 
 import TileTokenPair from './TileTokenPair';
 
 
 function TileDisplay(props) {
-  // const classes = useStyles();
   const dispatch = useDispatch();
   let selectedGame = useSelector((state) => state.activeGame)
 

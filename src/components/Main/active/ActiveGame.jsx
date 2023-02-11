@@ -1,7 +1,7 @@
 import SelectedGameInfo from './SelectedGameInfo';
 import TileDisplay from './TileDisplay';
 
-function GameToolbar() {
+function ActiveGame() {
   return (
     <div className="toolbar">
       <SelectedGameInfo />
@@ -10,4 +10,4 @@ function GameToolbar() {
   )
 }
 
-export default GameToolbar;
+export default ActiveGame;

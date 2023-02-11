@@ -8,8 +8,10 @@ import Main from './components/Main/Main';
 import Header from './components/Header/Header';
 import GamesDrawer from './components/Global/GamesDrawer/GamesDrawer'
 
-function App() {
+import useStyles from './components/Global/styles/app.js'
 
+function App() {
+  const classes = useStyles();
   const dispatch = useDispatch();
 
   const [gamesDrawerOpen, setGamesDrawerOpen] = useState(false);
@@ -21,15 +23,17 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header 
-        setGamesDrawerOpen={setGamesDrawerOpen} 
-      />
-      <Main />
+      <div className={classes.app}>
+        <Header 
+          setGamesDrawerOpen={setGamesDrawerOpen} 
+        />
+        <Main />
 
-      <GamesDrawer 
-        gamesDrawerOpen={gamesDrawerOpen} 
-        handleGamesDrawerClose={handleGamesDrawerClose} 
-      />
+        <GamesDrawer 
+          gamesDrawerOpen={gamesDrawerOpen} 
+          handleGamesDrawerClose={handleGamesDrawerClose} 
+        />
+      </div>
     </BrowserRouter>
   );
 
