@@ -7,8 +7,7 @@ export default makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#D9EFD9',
-    color: 'gold',
-    minWidth: '650px',
+    color: '#FFDA33',
     flex: 1
   },
 }));
