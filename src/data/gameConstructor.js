@@ -1,112 +1,99 @@
 import terrainTypes from "./terrainTypes";
+import { dungeon, miniboss, portal } from './gameStandards';
 
-export default function NewGame(owner, terrain, playercount, players){
+export default function NewGame(owner, terrain, playercount, players) {
   this.owner = owner;
   this.terrain = terrain;
   this.playercount = playercount;
   this.players = players;
 
-  this.tilePool = [];
-  this.tokenPool = [];
-  this.tileDiscard = [];
-  this.tokenDiscard = [];
+  this.draw = {
+    tile: [],
+    token: []
+  };
+
+  this.discard = {
+    tile: [],
+    token: []
+  };
+
   this.display = [];
 
   this.generatePools();
 }
 
-NewGame.prototype.generatePools = async function(){
-  for (let i=0; i<8; i++){
-    this.tilePool.push(new Tile(dungeon.type, dungeon.tileImg, dungeon.tileDesc));
+NewGame.prototype.generatePools = async function () {
+  for (let i = 0; i < 8; i++) {
+    this.draw.tile.push(new Tile(dungeon.type, dungeon.tileImg, dungeon.tileDesc));
   }
-  for (let i=0; i<7; i++){
-    this.tokenPool.push(new Token(portal.type, portal.tokenImg, portal.tokenDesc));
+  for (let i = 0; i < 7; i++) {
+    this.draw.token.push(new Token(portal.type, portal.tokenImg, portal.tokenDesc));
   }
-  for (let i=0; i<6; i++){
-    this.tokenPool.push(new Token(miniboss.type, miniboss.tokenImg, miniboss.tokenDesc));
+  for (let i = 0; i < 6; i++) {
+    this.draw.token.push(new Token(miniboss.type, miniboss.tokenImg, miniboss.tokenDesc));
   }
-  for (let i=0; i<this.terrain.length; i++){
+  for (let i = 0; i < this.terrain.length; i++) {
     let terrainobj = terrainTypes.get(this.terrain[i]);
-    if(terrainobj.variants){
+    if (terrainobj.variants) {
       let variants = terrainobj.variants;
-      for (let j=0; j<12; j++){
-        this.tilePool.push(new Tile(terrainobj.type, terrainobj.tileImg, terrainobj.tileDesc, variants[j]));
+      for (let j = 0; j < 12; j++) {
+        this.draw.tile.push(new Tile(terrainobj.type, terrainobj.tileImg, terrainobj.tileDesc, variants[j]));
       }
-    }else{
-      for (let j=0; j<12; j++){
-        this.tilePool.push(new Tile(terrainobj.type, terrainobj.tileImg, terrainobj.tileDesc));
+    } else {
+      for (let j = 0; j < 12; j++) {
+        this.draw.tile.push(new Tile(terrainobj.type, terrainobj.tileImg, terrainobj.tileDesc));
       }
     }
-    for (let j=0; j<10; j++){
-      this.tokenPool.push(new Token(terrainobj.creature, terrainobj.tokenImg, terrainobj.creature));
+    for (let j = 0; j < 10; j++) {
+      this.draw.token.push(new Token(terrainobj.creature, terrainobj.tokenImg, terrainobj.creature));
     }
-    this.tokenPool.push(new Token(terrainobj.type + ' Crystal', terrainobj.crystalImg, terrainobj.type + ' Crystal'));
+    this.draw.token.push(new Token(terrainobj.type + ' Crystal', terrainobj.crystalImg, terrainobj.type + ' Crystal'));
   }
 
-  await shuffle(this.tilePool);
-  await shuffle(this.tokenPool);
+  this.shuffle();
   this.addInitialPairs();
 }
 
-function shuffle(array){
-  let m = array.length, t, i;
-  while(m){
-    i = Math.floor(Math.random() * m--);
-    t = array[m];
-    array[m] = array[i];
-    array[i] = t;
+NewGame.prototype.shuffle = () => {
+  let tileLength = this.draw.tile.length, tokenLength = this.draw.token.length, temp, idx;
+  while (tileLength) {
+    idx = Math.floor(Math.random() * tileLength--);
+    temp = this.draw.tile[tileLength];
+    this.draw.tile[tileLength] = this.draw.tile[idx];
+    this.draw.tile[idx] = temp;
   }
-  return array;
+  while (tokenLength) {
+    idx = Math.floor(Math.random() * tokenLength--);
+    temp = this.draw.token[tokenLength];
+    this.draw.token[tokenLength] = this.draw.token[idx];
+    this.draw.token[idx] = temp;
+  }
 }
 
-NewGame.prototype.addInitialPairs = function() {
-  for(let i=0; i<4; i++){
-    const tile = this.tilePool.pop();
-    const token = this.tokenPool.pop();
+NewGame.prototype.addInitialPairs = function () {
+  for (let i = 0; i < 4; i++) {
+    const tile = this.draw.tile.pop();
+    const token = this.draw.token.pop();
     const pair = new DisplayPair(token, tile);
     this.display.push(pair);
   }
 }
 
-function Tile(tileName, tileImg, desc, variant=null){
+function Tile(tileName, tileImg, desc, variant = null) {
   this.tileName = tileName;
   this.tileImg = tileImg;
   this.description = desc;
   this.variant = variant;
 }
 
-function Token(tokenName, tokenImg, desc){
+function Token(tokenName, tokenImg, desc) {
   this.tokenName = tokenName;
   this.tokenImg = tokenImg;
   this.description = desc;
 }
 
-function DisplayPair(token, tile){
+function DisplayPair(token, tile) {
   this.token = token;
   this.tile = tile;
 }
 
-const dungeon = {
-  type: 'Dungeon',
-  tileImg: './img/Tiles/DungeonTile.png',
-  tileDesc: {
-    text: 'Dungeons lay at the center of deadly terrain, an enticement for the intrepid adventurer',
-    points: 'Each Dungeon is worth 1 base point.  Each Dungeon also gains a point for every different type of terrain that borders it.  If all four sides of a Dungeon are bordered by different types of terrain type, that Dungeon gains its maximum value of 5 points.  Tokens may NOT be placed on Dungeons.'
-  }
-}
-
-const miniboss = {
-  type: 'Miniboss',
-  tokenImg: './img/Tokens/MinibossToken.png',
-  tokenDesc: {
-    points: 'Miniboses are worth 2 points if they are placed on a terrain tile.  Thye may be placed on any terrain tile (except Dungeons) and do NOT count toward bands of Monsters.  Minibosses do not have a terrain icon.'
-  }
-}
-
-const portal = {
-  type: 'Portal',
-  tokenImg: './img/Tokens/PortalToken.png',
-  tokenDesc: {
-    points: 'Portals are not worth any points.  They are placed in your lair active-side up (the glowing side). Once per turn, you may use a single active Portal (flip it over) to change the positions of up to two Monsters or Minibosses on your map.  To use a Portal, pick up either 1 or 2 tokens on your map, then immediately place those same tokens on any currently open tile on your map.  You may reposition tokens in the following ways:  Move 1 token to an open terrain tile, Move 2 tokens to open terrain tiles, Move 1 token to an open terrain tile, then move 1 other token to where the first token used to be, Swap the positions of 2 tokens.'
-  }
-}
