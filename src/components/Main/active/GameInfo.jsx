@@ -18,13 +18,13 @@ const GameInfo = () => {
       </Typography>
       <GroupsRoundedIcon fontSize={'medium'} />
       {selectedGame.data.players.map(player => (
-        <Typography className={classes.text}>
+        <Typography key={player.name} className={classes.text}>
           {player.name}
         </Typography>
       ))}
       <TerrainRoundedIcon fontSize={'medium'} />
       {selectedGame.data.terrain.map(t => (
-        <Typography className={classes.text}>
+        <Typography key={t} className={classes.text}>
           {t}
         </Typography>
       ))}

@@ -26,11 +26,11 @@ const TokenInfo = () => {
       <div className={classes.tokenInfo}>
         <CollectionsRoundedIcon />
         <Typography className={classes.text}>
-          {selectedGame.data.tilePool.length}
+          {selectedGame.data.draw.tile.length}
         </Typography>
         <SwitchAccountRoundedIcon />
         <Typography className={classes.text}>
-          {selectedGame.data.tokenPool.length}
+          {selectedGame.data.draw.token.length}
         </Typography>
       </div>
     </div>
