@@ -7,20 +7,25 @@ import UndoIcon from '@mui/icons-material/Undo';
 
 import { saveActiveGame, undoPick } from '../../../redux/activeGameSlice'
 
+import useStyles from './styles/gameButtons';
+
 const GameButtons = ({undoDisabled}) => {
   const dispatch = useDispatch();
   const selectedGame = useSelector((state) => state.activeGame);
+  const classes = useStyles();
 
   return (
-    <div>
+    <div className={classes.panel}>
       <Button
         onClick={() => dispatch(saveActiveGame(selectedGame.data))}
+        className={classes.button}
       >
         <SaveIcon />SAVE
       </Button>
       <Button
         disabled={undoDisabled}
         onClick={() => dispatch(undoPick(selectedGame.data))}
+        className={classes.button}
       >
         <UndoIcon />Undo
       </Button>
