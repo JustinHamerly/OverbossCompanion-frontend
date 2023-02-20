@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Typography, CircularProgress } from '@material-ui/core';
+import { redirect } from 'react-router-dom';
 
 import { selectGame, clearActive } from '../../../redux/activeGameSlice';
 import { removeGame } from '../../../redux/gamesSlice';
@@ -39,6 +40,12 @@ function GameCards(props) {
     handleCloseDelete();
   }
 
+  const selectGameAndClose = (game) => {
+    dispatch(selectGame(game));
+    props.handleDrawerClose();
+    redirect('/active');
+  }
+
   return (
     <div className={classes.container}>
       <NewGameButton handleDrawerClose={props.handleDrawerClose} />
@@ -63,7 +70,7 @@ function GameCards(props) {
                       key={game._id}
                       idx={idx}
                       openDelete={openDelete}
-                      selectGame={selectGame}
+                      selectGame={selectGameAndClose}
                       handleDeleteConfirm={handleDeleteConfirm}
                     />
                   ))}

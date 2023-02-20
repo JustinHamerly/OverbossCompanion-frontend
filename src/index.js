@@ -17,12 +17,12 @@ const store = configureStore({
 });
 
 
-const printCurrentState = () => {
-  const state = store.getState();
-  console.log(state);
-}
+// const printCurrentState = () => {
+//   const state = store.getState();
+//   console.log(state);
+// }
  
-store.subscribe(printCurrentState);
+// store.subscribe(printCurrentState);
 
 
 
