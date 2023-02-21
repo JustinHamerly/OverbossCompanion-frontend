@@ -33,6 +33,6 @@ export default makeStyles(theme => ({
   tokenInfo: {
     display: 'flex',
     justifyContent: 'space-around',
-    width: '100%'
+    width: '50%'
   }
 }))
