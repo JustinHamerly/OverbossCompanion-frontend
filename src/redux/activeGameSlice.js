@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const saveActiveGame = createAsyncThunk('activeGame/saveActive', async (game, thunkAPI) => {
   const { data } = await api.saveGame(game._id, game);
-  return data
+  return data;
 })
 
 const activeGameOptions = {
@@ -36,20 +36,26 @@ const activeGameOptions = {
       status: ''
     }
   },
-  extraReducers: {
-    [saveActiveGame.pending]: (state, action) => {
-      state.status = 'saving game';
-    },
-    [saveActiveGame.fulfilled]: (state, action) => {
-      state.status = 'game saved';
-      state.data = action.payload;
-    },
-    [saveActiveGame.rejected]: (state, action) => {
-      state.status = 'game not saved';
-    },
+  extraReducers: builder => {
+    builder.addCase(
+      saveActiveGame.pending,
+      (state) => { state.status = 'saving game'; }
+    )
+    builder.addCase(
+      saveActiveGame.fulfilled,
+      (state, action) => {
+        state.status = 'game saved';
+        state.data = action.payload;
+      }
+    )
+    builder.addCase(
+      saveActiveGame.rejected,
+      (state) => {
+        state.status = 'game not saved';
+      }
+    )
   }
 }
-
 
 const activeGameSlice = createSlice(activeGameOptions);
 
