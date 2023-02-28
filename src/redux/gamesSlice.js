@@ -61,7 +61,6 @@ const gamesOptions = {
     builder.addCase(
       removeGame.fulfilled,
       (state, action) => {
-        console.log(action.payload)
         state.status = 'game removed'
         state.games = state.games.filter(game => game._id !== action.payload)
       }

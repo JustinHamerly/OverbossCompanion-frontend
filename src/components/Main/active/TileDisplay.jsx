@@ -4,12 +4,14 @@ import { Container, Typography } from "@material-ui/core";
 import { pickAndUpdate } from "../../../redux/activeGameSlice";
 
 import TileTokenPair from './TileTokenPair';
+import useStyles from './styles/TileDisplayStyles'
 
 
 function TileDisplay(props) {
   const dispatch = useDispatch();
+  const classes = useStyles();
   let selectedGame = useSelector((state) => state.activeGame)
-
+  console.log(selectedGame)
   const handlePick = (idx) => {
     let gameToUpdate = JSON.parse(JSON.stringify(selectedGame.data));
     const selectedToken = gameToUpdate.display[idx].token;
@@ -46,7 +48,7 @@ function TileDisplay(props) {
   }
 
   return (
-    <Container id="display" className="tileDisplay">
+    <Container id="display" className={classes.tileSpread}>
       {selectedGame.data ?
         selectedGame.data._id ?
           selectedGame.data.display.map((set, idx) => (
