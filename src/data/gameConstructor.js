@@ -24,30 +24,30 @@ export default function createGame(owner, terrain, playercount, players) {
 
 function generatePools(obj) {
   for (let i = 0; i < 8; i++) {
-    obj.draw.tile.push(createTile(dungeon.type, dungeon.tileImg, dungeon.tileDesc));
+    obj.draw.tile.push(createTile(dungeon.type, dungeon.color, dungeon.tileDesc));
   }
   for (let i = 0; i < 7; i++) {
-    obj.draw.token.push(createToken(portal.type, portal.tokenImg, portal.tokenDesc));
+    obj.draw.token.push(createToken(portal.type, portal.color, portal.tokenDesc));
   }
   for (let i = 0; i < 6; i++) {
-    obj.draw.token.push(createToken(miniboss.type, miniboss.tokenImg, miniboss.tokenDesc));
+    obj.draw.token.push(createToken(miniboss.type, miniboss.color, miniboss.tokenDesc));
   }
   for (let i = 0; i < obj.terrain.length; i++) {
     let terrainobj = terrainTypes.get(obj.terrain[i]);
     if (terrainobj.variants) {
       let variants = terrainobj.variants;
       for (let j = 0; j < 12; j++) {
-        obj.draw.tile.push(createTile(terrainobj.type, terrainobj.tileImg, terrainobj.tileDesc, variants[j]));
+        obj.draw.tile.push(createTile(terrainobj.type, terrainobj.color, terrainobj.tileDesc, variants[j]));
       }
     } else {
       for (let j = 0; j < 12; j++) {
-        obj.draw.tile.push(createTile(terrainobj.type, terrainobj.tileImg, terrainobj.tileDesc));
+        obj.draw.tile.push(createTile(terrainobj.type, terrainobj.color, terrainobj.tileDesc));
       }
     }
     for (let j = 0; j < 10; j++) {
-      obj.draw.token.push(createToken(terrainobj.creature, terrainobj.tokenImg, terrainobj.creature));
+      obj.draw.token.push(createToken(terrainobj.creature, terrainobj.color, terrainobj.creature));
     }
-    obj.draw.token.push(createToken(terrainobj.type + ' Crystal', terrainobj.crystalImg, terrainobj.type + ' Crystal'));
+    obj.draw.token.push(createToken(terrainobj.type + ' Crystal', terrainobj.color, terrainobj.type + ' Crystal'));
   }
 
   shuffle(obj);
@@ -80,19 +80,19 @@ function addInitialPairs(obj) {
   }
 }
 
-function createTile(tileName, tileImg, desc, variant = null) {
+function createTile(tileName, color, desc, variant = null) {
   return {
     tileName: tileName,
-    tileImg: tileImg,
+    color: color,
     description: desc,
     variant: variant
   }
 }
 
-function createToken(tokenName, tokenImg, desc) {
+function createToken(tokenName, color, desc) {
   return {
     tokenName: tokenName,
-    tokenImg: tokenImg,
+    color: color,
     description: desc
   }
 }

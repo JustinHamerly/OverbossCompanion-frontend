@@ -5,26 +5,36 @@ export default makeStyles(theme => ({
     width: '175px',
     height: '300px',
     margin: '5px',
-    border: '5px #2B1D46 groove'
+    border: '5px #2B1D46 groove',
+    backgroundColor: '#2B1D46'
   },
   cardContent: {
     padding: 0,
-    
   },
-  tileImage: {
-    outline: '#2B1D46 3px solid'
+  tileBox: {
+    outline: '#2B1D46 3px solid',
+    width: '175px',
+    height: '175px'
   },
-  tokenImage: {
-    position: 'relative',
-    top: '-60px',
-    left: '10px',
+  tokenBox: {
+    width: '65px',
+    height: '65px',
     borderRadius: '3px',
-    outline: '#2B1D46 3px solid'
+    margin: '55px',
+    display: 'inline-block',
+    outline: '#2B1D46 3px solid',
   },
   pairTextBox: {
-    position: 'relative',
-    top: '-60px',
-    float: 'right',
-    marginRight: '5px'
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'left'
+  },
+
+  selectionText: {
+    color: '#D9EFD9',
+    margin: '3px 0',
+    fontFamily: 'Rubik',
+    fontWeight: 'bold',
+    verticalAlign: 'center'
   }
 }))
