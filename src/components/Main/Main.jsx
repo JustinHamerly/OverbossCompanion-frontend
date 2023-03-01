@@ -2,7 +2,7 @@ import {Routes, Route} from 'react-router-dom'
 
 import About from './about/About';
 import Home from './home/Home';
-import GameToolbar from './active/ActiveGame';
+import ActiveGame from './active/ActiveGame';
 import NewGameForm from './newgame/NewGameForm';
 
 import useStyles from './styles/mainStyles.js';
@@ -15,7 +15,7 @@ function Main() {
       <Routes>
         <Route index element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/active' element={<GameToolbar />} />
+        <Route path='/active' element={<ActiveGame />} />
         <Route path='/new' element={<NewGameForm />} />
         <Route path='/profile' element={<p>Profile Component Here</p>} />
         <Route path='/login' element={<p>Login Component Here</p>} />

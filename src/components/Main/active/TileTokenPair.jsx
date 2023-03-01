@@ -2,20 +2,41 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { Typography, Button, Card, CardContent, CardActions } from '@material-ui/core'
 
-const TileTokenPair = (props) => {
-  let selectedGame = useSelector((state) => state.activeGame)
+import CollectionsRoundedIcon from '@mui/icons-material/CollectionsRounded';
+import SwitchAccountRoundedIcon from '@mui/icons-material/SwitchAccountRounded';
 
+import useStyles from './styles/TileTokenPairStyles'
+
+const TileTokenPair = (props) => {
+  let selectedGame = useSelector((state) => state.activeGame);
+  const classes = useStyles();
+  console.log(props)
   return (
-    <Card className="pair">
-      <CardContent>
-        <img src={props.set.tile.tileImg} alt={props.set.tile.tileName}></img>
-        <img src={props.set.token.tokenImg} alt={props.set.tile.tileName}></img>
-        <Typography>Tile: {props.set.tile.tileName}</Typography>
-        { 
-          props.set.tile.variant && 
-          <Typography>Tile Variant: {props.set.tile.variant}</Typography> 
-        }
-        <Typography>Token: {props.set.token.tokenName}</Typography>
+    <Card className={classes.cardPair}>
+      <CardContent className={classes.cardContent}>
+        <div 
+          alt={props.set.tile.tileName} 
+          className={classes.tileBox}
+          style={{background: props.set.tile.color}}
+        >
+          <div
+            style={{backgroundColor: props.set.token.color}}
+            alt={props.set.token.tokenName}
+            className={classes.tokenBox}
+          >
+          </div>
+        </div>
+        <div className={classes.pairTextBox}>
+          
+          <Typography className={classes.selectionText}>
+            <CollectionsRoundedIcon alt='tile icon' style={{color: '#FFDA33'}}/>
+            {props.set.tile.tileName} {props.set.tile.variant ? `- ${props.set.tile.variant}` : ''} 
+          </Typography>
+          <Typography className={classes.selectionText}>
+            <SwitchAccountRoundedIcon alt='token icon' style={{color: '#FFDA33'}} />
+            {props.set.token.tokenName}
+          </Typography>
+        </div>
       </CardContent>
       <CardActions>
         <Button 

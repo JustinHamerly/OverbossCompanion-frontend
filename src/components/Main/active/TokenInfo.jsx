@@ -1,10 +1,9 @@
 import React from 'react'
-import { Divider, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 
 import PersonIcon from '@mui/icons-material/Person';
-import CollectionsRoundedIcon from '@mui/icons-material/CollectionsRounded';
-import SwitchAccountRoundedIcon from '@mui/icons-material/SwitchAccountRounded';
+
 
 import useStyles from './styles/tokenInfoStyles'
 
@@ -15,24 +14,12 @@ const TokenInfo = () => {
   return (
     <div className={classes.container}>
       <Typography className={classes.header}>
-        CURRENT TURN
+        PLAYER TURN
       </Typography>
       <PersonIcon />
       <Typography className={classes.text}>
         {selectedGame.data.players[0].name}
       </Typography>
-
-      <Divider className={classes.divider} />
-      <div className={classes.tokenInfo}>
-        <CollectionsRoundedIcon />
-        <Typography className={classes.text}>
-          {selectedGame.data.draw.tile.length}
-        </Typography>
-        <SwitchAccountRoundedIcon />
-        <Typography className={classes.text}>
-          {selectedGame.data.draw.token.length}
-        </Typography>
-      </div>
     </div>
   )
 }

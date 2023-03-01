@@ -23,28 +23,52 @@ const gamesOptions = {
     games: [],
     status: '',
   },
-  extraReducers: {
-    [fetchAll.pending]: (state) => {state.status = 'loading games';},
-    [fetchAll.fulfilled]: (state, action) => {
-      state.status = 'games loaded';
-      state.games = action.payload;
-    },
-    [fetchAll.rejected]: (state) => {state.status = 'rejected fetch';},
+  extraReducers: builder => {
+    builder.addCase(
+      fetchAll.pending,
+      (state) => { state.status = 'loading games' }
+    )
+    builder.addCase(
+      fetchAll.fulfilled,
+      (state, action) => {
+        state.status = 'games loaded';
+        state.games = action.payload;
+      }
+    )
+    builder.addCase(
+      fetchAll.rejected,
+      (state) => { state.status = 'rejected fetch' }
+    )
 
-    [createNew.pending]: (state) => {state.status = 'creating game';},
-    [createNew.fulfilled]: (state, action) => {
-      state.status = 'game created';
-      state.games.push(action.payload);
-    },
-    [createNew.rejected]: (state) => {state.status = 'failed to create game';},
-
-    [removeGame.pending]: (state, action) => {state.status = 'removing game';},
-    [removeGame.fulfilled]: (state, action) => {
-      console.log(action.payload)
-      state.status = 'game removed';
-      state.games = state.games.filter(game => game._id !== action.payload);
-    },
-    [removeGame.rejected]: (state, action) => {state.status = 'failed to delete game';},
+    builder.addCase(
+      createNew.pending, (state) => { state.status = 'creating game' }
+    )
+    builder.addCase(
+      createNew.fulfilled,
+      (state, action) => {
+        state.status = 'game created';
+        state.games = [...state.games, action.payload];
+      }
+    )
+    builder.addCase(
+      createNew.rejected,
+      (state) => { state.status = 'failed to create game' }
+    )
+    builder.addCase(
+      removeGame.pending,
+      (state) => { state.status = 'removing game' }
+    )
+    builder.addCase(
+      removeGame.fulfilled,
+      (state, action) => {
+        state.status = 'game removed'
+        state.games = state.games.filter(game => game._id !== action.payload)
+      }
+    )
+    builder.addCase(
+      removeGame.rejected,
+      (state) => { state.status = 'failed to delete game' }
+    )
 
   }
 }
