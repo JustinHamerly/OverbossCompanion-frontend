@@ -5,7 +5,7 @@ export default makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-    margin: 'auto'
+    alignItems: 'top',
+    marginLeft: '10px'
   }
 }))

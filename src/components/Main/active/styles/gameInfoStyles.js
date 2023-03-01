@@ -9,7 +9,7 @@ export default makeStyles(theme => ({
     borderRadius: '10px',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   header: {
     textAlign: 'center',

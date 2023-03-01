@@ -9,7 +9,8 @@ export default makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
- 
+    margin: '10px',
+    height: 'auto'
   },
   text: {
     color: '#D9EFD9'
